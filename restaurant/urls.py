@@ -1,5 +1,5 @@
 """
-URL configuration for book_table project.
+URL configuration for restaurant project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -15,11 +15,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from book.views import my_book
+from django.urls import path, include
+from bookatable import views as index_views
+#from about import views as about_views
+
 
 urlpatterns = [
-    path('book/', my_book, name='book'),
-    path('admin/', admin.site.urls),
-    
+    path('', index_views.index, name='index'),
+#    path('about/', about_views.about, name='about'),
+#    path('admin/', admin.site.urls),
 ]
