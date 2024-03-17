@@ -23,5 +23,5 @@ from bookatable import views as index_views
 urlpatterns = [
     path('', index_views.index, name='index'),
 #    path('about/', about_views.about, name='about'),
-#    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
 ]
