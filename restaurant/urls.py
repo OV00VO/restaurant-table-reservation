@@ -16,12 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from bookatable import views as index_views
-#from about import views as about_views
+from bookatable import views
 
 
 urlpatterns = [
-    path('', index_views.index, name='index'),
-#    path('about/', about_views.about, name='about'),
     path('admin/', admin.site.urls),
+    path('', views.index, name='home'),
+    path('menu/', views.menu, name='menu'),
+    path('reservation/', views.reservation, name='reservation'),
+    path('about/', views.about, name='about'),
+    path('contact/', views.contact, name='contact'),
+    path('summernote/', include('django_summernote.urls')),
+    
+    
 ]
