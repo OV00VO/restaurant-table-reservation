@@ -18,15 +18,16 @@ from django.contrib import admin
 from django.urls import path, include
 from bookatable import views
 
-
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('', views.index, name='home'),
     path('menu/', views.menu, name='menu'),
-    path('reservation/', views.reservation, name='reservation'),
+    path('reservations/', views.reservations, name='reservations'),
+    path('register/', views.register, name='register'),
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
-    path('summernote/', include('django_summernote.urls')),
-    
-    
+    path('bookings/', views.bookings, name='bookings'),
+    path('login/', views.login, name='Login'),
+    path('logout/', views.logout, name='Logout'),
+    path('terms/', views.terms, name='Terms & Conditions'),
+    path('admin/', admin.site.urls),
 ]

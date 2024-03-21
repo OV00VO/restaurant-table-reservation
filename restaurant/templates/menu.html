@@ -1,52 +1,145 @@
 {% extends "base.html" %}
 
 {% block content %}
+<section class="container text-center py-5">
+<h2>Starters</h2>
 
-<!-- index.html content starts here -->
-<div class="container-fluid">
-    <div class="row">
-
-        <!-- Blog Entries Column -->
-        <div class="col-12 mt-3 left">
-            <div class="row">
-                {% for post in post_list %}
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <div class="image-container">
-                                <div class="image-flash">
-                                    <p class="author">Author: {{ post.author }}</p>
-                                </div>
-                            </div>
-                            <a href="#" class="post-link">
-                                <h2 class="card-title">{{ post.title }}</h2>
-                            </a>
-
-                            <hr />
-                            <p class="card-text text-muted h6">{{ post.created_on}}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                {% if forloop.counter|divisibleby:3 %}
-            </div>
-            <div class="row">
-                {% endif %}
-                {% endfor %}
-
-            </div>
-        </div>
-    </div>
-    {% if is_paginated %}
-    <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
-            {% if page_obj.has_next %}
-            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
-            {% endif %}
-        </ul>
-    </nav>
-    {% endif %}
+<div class="row row-cols-1 row-cols-md-2 g-4">
+<div class="col">
+<div class="card h-100">
+<div class="card-body">
+<h3>Seared Ahi Tuna with Wasabi Aioli (Gluten-Free)</h3>
+<p class="card-text">Marinated ahi tuna steaks seared to medium-rare, served with a spicy wasabi aioli and pickled ginger.</p>
+<span class="price">$24.00</span>
+</div>
+</div>
 </div>
 
-<!-- index.html content ends here -->
+<div class="col">
+<div class="card h-100">
+<div class="card-body">
+<h3>Roasted Butternut Squash Soup (Vegan)</h3>
+<p class="card-text">Creamy roasted butternut squash soup with a touch of coconut milk, garnished with toasted pumpkin seeds and fresh herbs.</p>
+<span class="price">$18.00</span>
+</div>
+</div>
+</div>
+
+<div class="col">
+<div class="card h-100">
+<div class="card-body">
+<h3>Burrata Caprese Salad (Vegetarian)</h3>
+<p class="card-text">Fresh mozzarella cheese filled with creamy stracciatella, served with heirloom tomatoes, basil pesto, and balsamic reduction.</p>
+<span class="price">$22.00</span>
+</div>
+</div>
+</div>
+
+<div class="col">
+<div class="card h-100">
+<div class="card-body">
+<h3>Crispy Calamari with Marinara Sauce</h3>
+<p class="card-text">Lightly battered and fried calamari rings served with a zesty marinara sauce for dipping.</p>
+<span class="price">$16.00</span>
+</div>
+</div>
+</div>
+</section>
+
+<section class="container text-center py-5">
+<h2>Main Courses</h2>
+
+<div class="row row-cols-1 row-cols-md-2 g-4">
+<div class="col">
+<div class="card h-100">
+<div class="card-body">
+<h3>Seared Scallops with Lemon Risotto (as before)</h3>
+<span class="price">$38.00</span>
+</div>
+</div>
+</div>
+
+<div class="col">
+<div class="card h-100">
+<div class="card-body">
+<h3>Roasted Rack of Lamb with Mint Jus (as before)</h3>
+<span class="price">$42.00</span>
+</div>
+</div>
+</div>
+
+<div class="col">
+<div class="card h-100">
+<div class="card-body">
+<h3>Heirloom Tomato Tart with Goat Cheese (as before)</h3>
+<span class="price">$32.00</span>
+</div>
+</div>
+</div>
+
+<div class="col">
+<div class="card h-100">
+<div class="card-body">
+<h3>Lentil Shepherd's Pie (Vegetarian)</h3>
+<p class="card-text">Hearty lentil stew with vegetables topped with creamy mashed potatoes and baked until golden brown.</p>
+<span class="price">$30.00</span>
+</div>
+</div>
+</div>
+</section>
+
+<section class="container text-center py-5">
+<h2>Desserts</h2>
+
+<div class="col">
+    <div class="card h-100">
+      <div class="card-body">
+        <h3>Seasonal Fruit Tart (Vegan)</h3>
+        <p class="card-text">Fresh seasonal fruits baked on a flaky vegan crust, drizzled with a light agave nectar glaze.</p>
+        <span class="price">$12.00</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container text-center py-5">
+<h2>Beverages</h2>
+
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body">
+        <h3>Wine List (Extensive Selection)</h3>
+        <p class="card-text">We offer a curated selection of wines from around the world to complement your meal. Ask your server for recommendations.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body">
+        <h3>Craft Beers</h3>
+        <p class="card-text">Selection of local and international craft beers on tap and by the bottle.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body">
+        <h3>Classic Cocktails</h3>
+        <p class="card-text">Our bartenders skillfully craft a range of classic and signature cocktails. Enjoy a perfectly mixed drink before, during, or after your meal.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body">
+        <h3>Non-Alcoholic Beverages</h3>
+        <p class="card-text">We offer a variety of soft drinks, juices, teas, and specialty coffees.</p>
+      </div>
+    </div>
+  </div>
+</section>
 {% endblock %}
