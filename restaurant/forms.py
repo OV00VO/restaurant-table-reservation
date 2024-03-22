@@ -2,6 +2,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
 from .models import Record
+from .models import TestModel
+from .models import Item
+from .forms import ItemForm
 
 class SignUpForm(UserCreationForm):
 	email = forms.EmailField(label="", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Email Address'}))
@@ -51,3 +54,13 @@ class AddRecordForm(forms.ModelForm):
 	class Meta:
 		model = Record
 		exclude = ("user",)
+  
+class TestModelForm(forms.ModelForm):
+  class Meta:
+    model = TestModel
+    fields = ['name', 'description']
+    
+class ItemForm(forms.ModelForm):
+  class Meta:
+    model = Item
+    fields = ['name', 'description']

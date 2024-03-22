@@ -1,5 +1,14 @@
+{% load static %}
+
+{% url 'home' as home_url %}
+{% url 'about' as about_url %}
+{% url 'account_login' as login_url %}
+{% url 'account_signup' as signup_url %}
+{% url 'account_logout' as logout_url %}
+
+
 <!doctype html>
-<html lang="en">
+<html class="h-100" lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,19 +17,11 @@
   </head>
   <body>
     {% include 'navbar.html' %}
-    <div class="container">
-      <br/>
-      {% if messages %}
-        {% for message in messages %}
-          <div class="alert" role="alert">
-            {{ message }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
 
-
-        {% endfor %}
-      {% endif %}
-      
+{% if user.is_authenticated %}
+{% else %}
+{% endif %}
+    
       {% block content %}
       {% endblock%}
       {% include 'footer.html' %}

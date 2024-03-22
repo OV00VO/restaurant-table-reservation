@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple CRUD Test</title>
+</head>
+<body>
+  <h1>Test CRUD</h1>
+  <h2>Create New Entry</h2>
+  <form method="post">
+    {% csrf_token %}  # Add CSRF token for security
+    {{ form.as_p }}  # Render form fields with automatic validation messages
+    <button type="submit">Create</button>
+  </form>
+
+  <h2>Existing Entries</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for entry in entries %}
+      <tr>
+        <td>{{ entry.name }}</td>
+        <td>{{ entry.description }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
+</html>

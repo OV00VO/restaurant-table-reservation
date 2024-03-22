@@ -17,11 +17,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from bookatable import views
+from django.views.generic import TemplateView
 
 urlpatterns = [
+    path('accounts/', include('allauth.urls')),
+    path('', include('bookatable.urls')),
     path('', views.index, name='home'),
     path('menu/', views.menu, name='menu'),
     path('reservations/', views.reservations, name='reservations'),
+    path('reservation_success/', views.reservation_success, name='reservation_success'),
+    path('reservation_success/', TemplateView.as_view(template_name='reservation_success.html'), name='reservation_success'),
     path('register/', views.register, name='register'),
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
@@ -29,5 +34,7 @@ urlpatterns = [
     path('login/', views.login, name='Login'),
     path('logout/', views.logout, name='Logout'),
     path('terms/', views.terms, name='Terms & Conditions'),
-    path('admin/', admin.site.urls),
+    path('test_crud/', views.test_crud, name='Test_CRUD'),
+    path('crud_page/', views.crud_page, name='CRUD Page'),
+    path('admin/', admin.site.urls),  
 ]

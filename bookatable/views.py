@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
-#from django.http import generic
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
+from allauth.account.views import LoginView
+from .models import TestModel
+from .models import Item
 
-# Create your views here.
 def index(request):
     context = {}
     return render(request, 'index.html', context)
@@ -15,6 +16,10 @@ def menu(request):
 def reservations(request):
     context = {}
     return render(request, 'reservations.html', context)
+
+def reservation_success(request):
+    context = {}
+    return render(request, 'reservation_success.html', context)
 
 def about(request):
     context = {}
@@ -51,6 +56,7 @@ def login_form(request):
 def add_record(request):
     context = {}
     return render(request, 'add_record.html', context)
+pass
 
 def register(request):
     context = {}
@@ -67,4 +73,33 @@ def login_view(request):
     user = authenticate(request, username=username, password=password)
     if user is not None:
       login(request, user)
-      return redirect('home')  # Redirect to your desired page after login
+      return redirect('home')
+
+def create_reservation(request):
+    reservation = form.save()
+    context = {'reservation': reservation}
+    return render(request, 'reservation_success.html', context)
+
+def test_crud(request):
+  if request.method == 'POST':
+    form = TestModelForm(request.POST)
+    if form.is_valid():
+      form.save()
+      return redirect('test_crud')
+
+  entries = TestModel.objects.all()
+  form = TestModelForm()
+  context = {'entries': entries, 'form': form}
+  return render(request, 'test_crud.html', context)
+
+def crud_page(request):
+  if request.method == 'POST':
+    form = ItemForm(request.POST)
+    if form.is_valid():
+      form.save()
+      return redirect('crud_page')
+
+  entries = ItemForm.objects.all()
+  form = ItemForm()
+  context = {'entries': entries, 'form': form}
+  return render(request, 'crud_page.html', context)
