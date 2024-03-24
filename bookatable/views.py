@@ -1,25 +1,37 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from django.contrib.auth import authenticate, login, logout
-from allauth.account.views import LoginView
-from .models import TestModel
-from .models import Item
+from django.dispatch import receiver
 
-def index(request):
+from allauth.account.forms import UserForm
+
+from .models import Reservation
+
+reservations = Reservation.objects.all()
+
+@login_required
+def update_user_profile(request):
+    if request.method == 'POST':
+        form = UserForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Profile information updated successfully!')
+            return redirect('create_reservation')
+    else:
+        form = UserForm(instance=request.user)
+    context = {'form': form}
+    return render(request, 'create_reservation.html', context)
+
+def home(request):
     context = {}
-    return render(request, 'index.html', context)
+    return render(request, 'home.html', context)
 
 def menu(request):
     context = {}
     return render(request, 'menu.html', context)
 
-def reservations(request):
-    context = {}
-    return render(request, 'reservations.html', context)
-
-def reservation_success(request):
-    context = {}
-    return render(request, 'reservation_success.html', context)
+def reservation(request):
+    context = {'message': 'Your reservation has been successfully created!'}
+    return render(request, 'reservation.html', context)
 
 def about(request):
     context = {}
@@ -29,77 +41,119 @@ def contact(request):
     context = {}
     return render(request, 'contact.html', context)
 
-def bookings(request):
-    context = {}
-    return render(request, 'bookings.html', context)
-
 def login(request):
     context = {}
-    return render(request, 'login.html', context)
+    return render(request, 'account/login.html', context)
 
 def logout(request):
     context = {}
     return render(request, 'logout.html', context)
 
-def logout_confirm(request):
-    context = {}
-    return render(request, 'logout_confirm.html', context)
-
-def record(request):
-    context = {}
-    return render(request, 'record.html', context)
-
-def login_form(request):
-    context = {}
-    return render(request, 'login_form.html', context)
-
-def add_record(request):
-    context = {}
-    return render(request, 'add_record.html', context)
-pass
-
-def register(request):
-    context = {}
-    return render(request, 'register.html', context)
-
-def terms(request):
-    context = {}
-    return render(request, 'terms.html', context)
-
-def login_view(request):
-  if request.method == 'POST':
-    username = request.POST['username']
-    password = request.POST['password']
-    user = authenticate(request, username=username, password=password)
-    if user is not None:
-      login(request, user)
-      return redirect('home')
-
 def create_reservation(request):
-    reservation = form.save()
+    if request.method == 'POST':
+        form = ReservationForm(request.POST)
+        if form.is_valid():
+            reservation = form.save(commit=False)
+            reservation.name = request.name
+            reservation.save()
+            return redirect('reservation_success')
+        else:
+          form = ReservationForm()
+    else:
+        form = ReservationForm()
+    return render(request, 'create_reservation.html', {'form': form})
+
+def read_reservation(request):
+    reservations = Reservation.objects.all()
+    context = {'reservation': reservations}
+    return render(request, 'reservation_list.html', context)
+
+def update_reservation(request, reservation_id):
+    reservation = Reservation.objects.get(pk=reservation_id)
+    if request.method == 'POST':
+        form = ReservationForm(request.POST, instance=reservation)
+        if form.is_valid():
+            form.save()
+            return render(request, 'reservation_list.html', context)
+    else:
+        form = ReservationForm(instance=reservation)
+    context = {'form': form}
+    return render(request, 'update_reservation.html', context)
+
+def delete_reservation(request, reservation_id):
+    reservation = Reservation.objects.get(pk=reservation_id)
+    if request.method == 'POST':
+        reservation.delete()
+        return redirect('reservation_list')
     context = {'reservation': reservation}
+    return render(request, 'reservation_confirm_delete.html', context)
+
+def list_reservation(request):
+    reservations = Reservation.objects.all()
+    context = {'reservation': reservations}
+    return render(request, 'reservation_list.html', context)
+
+def reservation_success(request):
+    context = {'message': 'Your reservation has been successfully created!'}
     return render(request, 'reservation_success.html', context)
 
+def record(request):
+    context = {'message': 'record'}
+    return render(request, 'record.html', context)
+
+def my_reservations(request):
+    if request.user.is_authenticated:
+        reservations = Reservation.objects.filter(user=request.user)
+    else:
+        return render(request, 'not_authenticated.html')
+
+    return render(request, 'my_reservations.html', {'reservations': reservations})
+
+def all_bookings(request):
+    if request.user.is_superuser:
+        bookings = Reservation.objects.all()
+        return render(request, 'my_reservations.html', {'my_reservations': bookings})
+    else:
+        return render(request, 'unauthorized.html')
+
+from django.shortcuts import render, redirect
+from .models import Reservation
+
 def test_crud(request):
-  if request.method == 'POST':
-    form = TestModelForm(request.POST)
-    if form.is_valid():
-      form.save()
-      return redirect('test_crud')
+    message = ''
 
-  entries = TestModel.objects.all()
-  form = TestModelForm()
-  context = {'entries': entries, 'form': form}
-  return render(request, 'test_crud.html', context)
+    if request.method == 'POST' and 'create_button' in request.POST:
+        try:
+            user = User.objects.get(username='Guest')
+            new_reservation = Reservation.objects.create(
+                user=user,
+                date=datetime.date.today() + datetime.timedelta(days=1),
+                time=datetime.time(hour=11, minute=0),
+            )
+            message = 'Reservation created successfully!'
+        except Exception as e:
+            message = f'Error creating reservation: {e}'
 
-def crud_page(request):
-  if request.method == 'POST':
-    form = ItemForm(request.POST)
-    if form.is_valid():
-      form.save()
-      return redirect('crud_page')
+    reservations = Reservation.objects.all().order_by('-id')
 
-  entries = ItemForm.objects.all()
-  form = ItemForm()
-  context = {'entries': entries, 'form': form}
-  return render(request, 'crud_page.html', context)
+    if request.method == 'POST' and 'update_button' in request.POST:
+        try:
+            reservation_id = int(request.POST['update_id'])
+            reservation_to_update = Reservation.objects.get(id=reservation_id)
+            reservation_to_update.date = datetime.date.today() + datetime.timedelta(days=2)
+            reservation_to_update.save()
+            message = 'Reservation updated successfully!'
+        except Exception as e:
+            message = f'Error updating reservation: {e}'
+
+    if request.method == 'POST' and 'delete_button' in request.POST:
+        try:
+            reservation_id = int(request.POST['delete_id'])
+            reservation_to_delete = Reservation.objects.get(id=reservation_id)
+            reservation_to_delete.delete()
+            message = 'Reservation deleted successfully!'
+        except Exception as e:
+            message = f'Error deleting reservation: {e}'
+
+    context = {'message': message, 'reservations': reservations}
+    return render(request, 'test_crud.html', context)

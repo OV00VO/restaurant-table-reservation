@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if user.is_authenticated %}
+
+<section class="container py-5">
+  <h2>Your Current Reservations</h2>
+  <table class="table table-striped table-hover table-bordered">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for reservation in reservations %}
+      <tr>
+        <td>{{ reservation.date }}</td>
+        <td>{{ reservation.time }}</td>
+        <td>
+          <a href="{% url 'update_reservation' reservation.id %}" class="btn btn-sm btn-info">Edit</a>
+          <a href="{% url 'delete_reservation' reservation.id %}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this reservation?')">Delete</a>
+        </td>
+      </tr>
+      {% endfor %}
+      {% if not reservations %}
+      <tr>
+        <td colspan="3" style="background-color: rgba(255, 153, 153, 0.5); color: black; border-radius: 5px; padding-left: 10px;">
+          <span style="color: pink;">❌</span> There are currently no booked reservations.
+        </td>
+      </tr>
+      {% endif %}
+    </tbody>
+  </table>
+</section>
+
+<section class="container py-5">
+  <h2>Create a New Booking Request</h2>
+
+  {% if messages %}
+  <ul class="list-group">
+    {% for message in messages %}
+    <li class="list-group-item alert alert-{{ message.tags }}">{{ message }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  <form method="POST" action="{% url 'create_reservation' %}" class="row needs-validation" novalidate>
+    {% csrf_token %}
+    {% for field in form %}
+    <div class="col-md-6 mb-3">
+      <label for="{{ field.name }}" class="form-label">{{ field.label }}</label>
+      <div class="input-group">
+        {{ field.as_p }}
+        {% if field.errors %}
+        <div class="invalid-feedback">
+          {% for error in field.errors %}
+          <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Create Booking Request</button>
+    </div>
+  </form>
+
+  <h2>Update Your Information</h2>
+
+  <form method="POST" action="{% url 'update_user_info' %}">  {% csrf_token %}
+    <div class="col-md-6 mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" name="name" value="{{ user.username }}">
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" name="email" value="{{ user.email }}">
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-secondary">Update Information</button>
+    </div>
+  </form>
+</section>
+
+{% else %}
+<h2>Sign In</h2>
+<p>Please sign in to manage your bookings or create a new reservation.</p>
+<a href="{% url 'login' %}" class="btn btn-primary">Sign In</a>
+<a href="{% url 'signup' %}" class="btn btn-secondary">Register</a>
+{% endif %}
+{% endblock %}

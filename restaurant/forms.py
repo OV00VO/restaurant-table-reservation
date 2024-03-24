@@ -5,6 +5,8 @@ from .models import Record
 from .models import TestModel
 from .models import Item
 from .forms import ItemForm
+from .models import Reservation
+
 
 class SignUpForm(UserCreationForm):
 	email = forms.EmailField(label="", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Email Address'}))
@@ -64,3 +66,8 @@ class ItemForm(forms.ModelForm):
   class Meta:
     model = Item
     fields = ['name', 'description']
+
+class ReservationForm(forms.ModelForm):
+  class Meta:
+    model = Reservation
+    fields = ['name', 'email', 'phone_number', 'date', 'time', 'number_of_guests', 'occasion', 'agreed_to_terms']

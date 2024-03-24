@@ -1,0 +1,88 @@
+{% extends 'base.html' %} {% block content %} {% if user.is_authenticated %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<section class="container py-5">
+<h2>Your Current Reservations</h2>
+<table class="table table-striped table-hover table-bordered">
+  <tbody>
+    {% for reservation in reservations %}
+    <tr>
+      <td>{{ reservation.date }}</td>
+      <td>{{ reservation.time }}</td>
+      <td>
+        <a
+          href="{% url 'update_reservation' reservation.id %}"
+          class="btn btn-sm btn-info"
+          >Edit</a
+        >
+      </td>
+      <td>
+        <a
+          href="{% url 'delete_reservation' reservation.id %}"
+          class="btn btn-sm btn-danger"
+          >Delete</a
+        >
+      </td>
+    </tr>
+    {% endfor %} {% if not reservations %}
+    <tr>
+      <td colspan="4" style="background-color: rgba(255, 153, 153, 0.5); color: black; border-radius: 5px; padding-left: 10px;">
+  <span style="color: pink;">❌</span> There is currently no booked reservations at the moment, <b>{{ user.username }}</b></span>, please book your next reservation here below.
+</td>
+
+</td>
+    </tr>
+    {% endif %}
+  </tbody>
+</table>
+<section class="container py-5">
+<h2>Create a New Booking Request</h2>
+<form
+  method="POST"
+  action="{% url 'create_reservation' %}"
+  class="row needs-validation"
+  novalidate
+>
+  {% csrf_token %} {% for field in form %}
+  <div class="col-md-4 mb-4">
+    <label for="{{ field.name }}" class="form-label">{{ field.label }}</label>
+    <div class="input-group">
+      {{ field.as_p }} {% if field.errors %}
+      <div class="invalid-feedback">
+        {% for error in field.errors %}
+        <span>{{ error }}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  </section>
+  {% endfor %}
+  <button type="submit" class="btn btn-primary">Create a Booking Request</button>
+</form>
+
+{% else %}
+
+<h2>Sign In</h2>
+<p>Please sign in to manage your bookings or create a new reservation.</p>
+<a href="{% url 'login' %}" class="btn btn-primary">Sign In</a>
+<a href="{% url 'signup' %}" class="btn btn-secondary"
+  >Register</a
+>
+{% if bookings %}
+  <h2>Your Bookings</h2>
+  <ul>
+    {% for booking in bookings %}
+      <li>
+        Date: {{ booking.date }} - Time: {{ booking.time }}
+        </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>You don't have any current bookings.</p>
+</section>
+{% endif %}
+{% endif %} {% endblock %}

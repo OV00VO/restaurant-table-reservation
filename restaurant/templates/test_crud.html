@@ -1,33 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Simple CRUD Test</title>
+    <meta charset="UTF-8">
+    <title>CRUD Test Page - Reservations</title>
 </head>
 <body>
-  <h1>Test CRUD</h1>
-  <h2>Create New Entry</h2>
-  <form method="post">
-    {% csrf_token %}  # Add CSRF token for security
-    {{ form.as_p }}  # Render form fields with automatic validation messages
-    <button type="submit">Create</button>
-  </form>
+    <h1>CRUD Test for Reservations</h1>
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
 
-  <h2>Existing Entries</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for entry in entries %}
-      <tr>
-        <td>{{ entry.name }}</td>
-        <td>{{ entry.description }}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+    <h2>Create Reservation (for Testing Purposes)</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" name="create_button">Create Test Reservation</button>
+    </form>
+
+    <h2>Read Reservations</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>User</th>  <th>Date</th>
+                <th>Time</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reservation in reservations %}
+            <tr>
+                <td>{{ reservation.id }}</td>
+                <td>{{ reservation.user }}</td>  <td>{{ reservation.date }}</td>
+                <td>{{ reservation.time }}</td>
+                <td>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="update_id" value="{{ reservation.id }}">
+                        <button type="submit" name="update_button">Update</button>
+                    </form>
+                </td>
+                <td>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="delete_id" value="{{ reservation.id }}">
+                        <button type="submit" name="delete_button">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>

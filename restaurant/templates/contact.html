@@ -1,96 +1,139 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block content %}
 
-{% block content %}
+<section class="d-flex justify-content-center align-items-center min-vh-100 hero">
+  <div class="bg-image overlay" style="background-image: url('https://res.cloudinary.com/dpp16gilv/image/upload/v1711030488/Hero%20Images/hero5_dopqhl.webp');"></div>
+  <div class="container position-absolute top-50 start-50 translate-middle text-center">
+    <h2><b>Contact Us at Restaurant Fine Dine</b></h2>
+    <p><b>Below you can find about more how you can contact at Restaurant Fine Dine</b></p>
+    <a href="/reservation" class="btn btn-primary">Make a Reservation by login in to your Restaurant Fine Dine account<br>Or by Request a Table by email submission</a>
+</section>
+
+<style>
+  .overlay {
+    opacity: 0.5;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+  }
+</style>
 
 <section class="container py-5">
-  <div class="row">
-    <div class="col-md-6 mb-3">
-      <h2>Contact Us</h2>
-      <form>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h2><i class="fa-solid fa-envelope fa-bounce"></i> Contact us at Restaurant Fine Dine</h2>
+      <form id="contact-form" method="POST" action="https://formdump.codeinstitute.net" target="_blank">
         <div class="mb-3">
-          <label for="name" class="form-label">Name</label>
-          <input type="text" class="form-control" id="name" required>
+          <label for="first_name" class="form-label">First Name</label>
+          <input type="text" name="first_name" id="first_name" class="form-control" required>
         </div>
         <div class="mb-3">
-          <label for="email" class="form-label">Email Address</label>
-          <input type="email" class="form-control" id="email" aria-describedby="emailHelp" required>
-          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          <label for="last_name" class="form-label">Last Name</label>
+          <input type="text" name="last_name" id="last_name" class="form-control" required>
         </div>
         <div class="mb-3">
-          <label for="subject" class="form-label">Subject</label>
-          <input type="text" class="form-control" id="subject">
+          <label for="email_address" class="form-label">Email Address</label>
+          <input type="email" name="email_address" id="email_address" class="form-control" required>
         </div>
         <div class="mb-3">
-          <label for="message" class="form-label">Message</label>
-          <textarea class="form-control" id="message" rows="3" required></textarea>
+          <label for="phone_number" class="form-label">Phone number</label>
+          <input type="tel" name="phone_preference" id="phone_number" class="form-control">
         </div>
-        <button type="submit" class="btn btn-primary">Send Message</button>
+        <button type="submit" class="btn btn-primary">Contact us Now!</button>
       </form>
     </div>
-    <div class="col-md-6 mb-3">
+  </div>
+</section>
+<section class="container py-5">   
       <h2>Restaurant Fine Dine: A Haven for Discerning Tastes</h2>
-      <p>Experience unforgettable dining at Restaurant Fine Dine. We offer an exquisite selection of dishes prepared with the freshest seasonal ingredients and meticulous attention to detail. Whether you're seeking a sophisticated meal, a vibrant social scene, or a relaxing midday escape, we have a space to suit your mood.</p>
+      <p>
+        Experience unforgettable dining at Restaurant Fine Dine. We offer an
+        exquisite selection of dishes prepared with the freshest seasonal
+        ingredients and meticulous attention to detail.     
+        Whether you're seeking a sophisticated meal, a vibrant social scene, 
+        or a relaxing midday escape,
+        we have a space to suit your mood.
+      </p>
     </div>
   </div>
-
+  </div>
+<section class="container py-5"> 
   <h2>Unwind & Explore Our Facilities</h2>
 
   <div class="row">
     <div class="col-md-4 mb-3">
       <div class="card h-100">
-        <img src="image.jpg" class="card-img-top" alt="Elegant Dining Room">
         <div class="card-body">
           <h5 class="card-title">Elegant Dining Room (11:00 AM - 10:00 PM)</h5>
-          <p class="card-text">Indulge in curated menus in our refined setting, perfect for any occasion. Our attentive staff ensures your comfort and satisfaction.</p>
+          <p class="card-text">
+            Indulge in curated menus in our refined setting, perfect for any
+            occasion. Our attentive staff ensures your comfort and satisfaction.
+          </p>
         </div>
       </div>
     </div>
     <div class="col-md-4 mb-3">
       <div class="card h-100">
-        <img src="image2.jpg" class="card-img-top" alt="Stylish Cocktail Bar">
         <div class="card-body">
           <h5 class="card-title">Stylish Cocktail Bar (6:00 PM - 2:00 AM)</h5>
-          <p class="card-text">Unwind and socialize in our lively bar. Our talented mixologists craft innovative and classic cocktails. Enjoy live music (on select nights) or simply savor a perfectly crafted drink.</p>
+          <p class="card-text">
+            Unwind and socialize in our lively bar. Our talented mixologists
+            craft innovative and classic cocktails. Enjoy live music (on select
+            nights) or simply savor a perfectly crafted drink.
+          </p>
         </div>
       </div>
     </div>
     <div class="col-md-4 mb-3">
       <div class="card h-100">
-        <img src="image3.jpg" class="card-img-top" alt="Energetic Nightclub">
         <div class="card-body">
           <h5 class="card-title">Energetic Nightclub (10:00 PM - 2:00 AM)</h5>
-          <p class="card-text">Dance the night away to pulsating music by our resident DJs. VIP experiences available in exclusive booths.</p>
+          <p class="card-text">
+            Dance the night away to pulsating music by our resident DJs. VIP
+            experiences available in exclusive booths.
+          </p>
         </div>
       </div>
     </div>
   </div>
 
-  <p>**Please note:** For general inquiries about our facilities, this contact page provides our contact information. We recommend visiting our website for more detailed information or following us on social media for updates.</p>
-  <br>
+  <p>
+    **Please note:** For general inquiries about our facilities, this contact
+    page provides our contact information. We recommend visiting our website for
+    more detailed information or following us on social media for updates.
+  </p>
+  <br />
 
   <h3>Experience the Difference</h3>
 
-  <p>At Restaurant Fine Dine, we are committed to providing an exceptional experience that exceeds expectations.
-
-
-<a href="../reservations.html" class="btn btn-primary mt-3" style="text-align: center;">Make a Reservation</a>
-
-</section>
+  <p>
+    At Restaurant Fine Dine, we are committed to providing an exceptional
+    experience that exceeds expectations.
+  </p>
 
 <section class="container py-5">
   <h2>Locate Us</h2>
-  <p>Have a question or want to make a reservation? Reach out to us using the information below, or fill out the contact form above.</p>
+  <p>
+    Have a question or want to make a reservation? Reach out to us using the
+    information below, or fill out the contact form above.
+  </p>
 
   <div class="row">
     <div class="col-md-6">
-      <p><i class="fas fa-map-marker-alt"></i>  123 Main Street, Anytown, CA 12345</p>
-      <p><i class="fas fa-phone"></i>  (555) 555-5555</p>
-      <p><i class="fas fa-envelope"></i>  info@restaurantfinedine.com</p>
+      <p>
+        <i class="fas fa-map-marker-alt"></i> Colinary Street, Foodtown, FD 12345
+      </p>
+      <p><i class="fas fa-phone"></i> (0200) restaurant-fine-dine</p>
+      <p><i class="fas fa-envelope"></i> info@restaurantfinedine.com</p>
     </div>
     <div class="col-md-6">
-      <div id="map" style="width: 100%; height: 300px;"></div>
-      <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+      <div id="map" style="width: 100%; height: 300px"></div>
     </div>
   </div>
-        
+
   {% endblock %}
+</section>

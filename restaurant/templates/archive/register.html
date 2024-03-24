@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+
+section class="d-flex justify-content-center align-items-center min-vh-100 hero">
+  <div class="bg-image overlay" style="background-image: url('https://res.cloudinary.com/dpp16gilv/image/upload/v1711030488/Hero%20Images/hero3_ltygo9.webp');"></div>
+  <div class="container position-absolute top-50 start-50 translate-middle text-center">
+    <h2>Welcome to Our Restaurant</h2>
+    <p>Experience delicious food and drinks in a vibrant atmosphere.</p>
+    <a href="/reservation" class="btn btn-primary">Make a Reservation</a>
+  </div>
+</section>
+
+<style>
+  .overlay {
+    opacity: 0.5;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+  }
+</style>
+
+<div class="col-md-6 offset-md-3">
+<h1>Register</h1>
+<br/>
+
+<form method="POST" action="">
+	{% csrf_token %}
+	{% if form.errors %}
+			<div class="alert alert-warning alert-dismissible fade show" role="alert">
+			  Your Form Has Errors
+			  {% for field in form %}
+			  	{% if field.errors %}
+			  		{{ field.errors }}
+			  	{% endif %}
+			  {% endfor %}
+			  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+		{% endif %}
+
+	{{ form.as_p }}
+
+	<br/>
+	  <button type="submit" class="btn btn-secondary">Register</button>
+	</form>
+
+
+
+</div>
+
+{% endblock %}

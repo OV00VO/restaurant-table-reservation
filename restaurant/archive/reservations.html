@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+<h1>Your Reservations</h1>
+
+<h2>Create a New Reservation</h2>
+<form method="POST" action="{% url 'reservations' %}">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" name="create_reservation" class="btn btn-primary">Create Reservation</button>
+</form>
+
+<h2>Existing Reservations</h2>
+<table class="table table-striped table-hover table-bordered">
+  <thead>
+    <tr class="table-dark">
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Date</th>
+      <th scope="col">Time</th>
+      <th scope="col">Guests</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for reservation in reservations %}
+    <tr>
+      <td>{{ reservation.name }}</td>
+      <td>{{ reservation.email }}</td>
+      <td>{{ reservation.phone_number }}</td>
+      <td>{{ reservation.date }}</td>
+      <td>{{ reservation.time }}</td>
+      <td>{{ reservation.number_of_guests }}</td>
+      <td>
+        <a href="{% url 'reservations' %}" class="btn btn-sm btn-info" data-reservation-id="{{ reservation.id }}">Edit</a>
+        <a href="{% url 'reservations' %}?delete_reservation={{ reservation.id }}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this reservation?')">Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

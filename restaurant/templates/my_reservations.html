@@ -1,0 +1,34 @@
+{% extends 'base.html' %} {% block content %} {% if bookings %}
+<br />
+<br />
+<br />
+<h2>Your Bookings</h2>
+<ul>
+  {% if reservations %} {% for reservation in reservations %}
+  <li>Date: {{ reservation.date }} - Time: {{ reservation.time }}</li>
+  {% endfor %} {% else %}
+  <p>You don't have any current bookings.</p>
+  </ul>
+  <h2>All Bookings</h2>
+<table>
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Date</th>
+            <th>Time</th>
+            </tr>
+    </thead>
+    <tbody>
+        {% for booking in bookings %}
+        <tr>
+            <td>{{ booking.user }}</td>  # Display username if using User model
+            <td>{{ booking.name }}</td> 
+            <td>{{ booking.date }}</td>
+            <td>{{ booking.time }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+ {% endif %}
+ {% endif %}
+{% endblock %}

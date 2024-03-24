@@ -1,6 +1,29 @@
 {% extends "base.html" %}
 
 {% block content %}
+<section class="d-flex justify-content-center align-items-center min-vh-100 hero">
+  <div class="bg-image overlay" style="background-image: url('https://res.cloudinary.com/dpp16gilv/image/upload/v1711030488/Hero%20Images/hero5_dopqhl.webp');"></div>
+  <div class="container position-absolute top-50 start-50 translate-middle text-center">
+    <h2><b>Welcome to Restaurant Fine Dine Food and Beverages Menu</b></h2>
+    <p><b>Below you find our delicious food and beverages with cocktails from our barmenu!</p>
+    <a href="/reservation" class="btn btn-primary">Make a Reservation by login in to your Restaurant Fine Dine account<br>Or by Request a Table by email submission</a>
+  </div>
+</section>
+
+<style>
+  .overlay {
+    opacity: 0.5;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+  }
+</style>
+
 <section class="container text-center py-5">
 <h2>Starters</h2>
 
@@ -53,7 +76,7 @@
 <div class="col">
 <div class="card h-100">
 <div class="card-body">
-<h3>Seared Scallops with Lemon Risotto (as before)</h3>
+<h3>Seared Scallops with Lemon Risotto</h3>
 <span class="price">$38.00</span>
 </div>
 </div>
@@ -62,7 +85,7 @@
 <div class="col">
 <div class="card h-100">
 <div class="card-body">
-<h3>Roasted Rack of Lamb with Mint Jus (as before)</h3>
+<h3>Roasted Rack of Lamb with Mint Jus</h3>
 <span class="price">$42.00</span>
 </div>
 </div>
@@ -71,7 +94,7 @@
 <div class="col">
 <div class="card h-100">
 <div class="card-body">
-<h3>Heirloom Tomato Tart with Goat Cheese (as before)</h3>
+<h3>Heirloom Tomato Tart with Goat Cheese</h3>
 <span class="price">$32.00</span>
 </div>
 </div>
@@ -91,7 +114,9 @@
 <section class="container text-center py-5">
 <h2>Desserts</h2>
 
-<div class="col">
+<div class="row row-cols-1 row-cols-md-2 g-4">
+
+  <div class="col">
     <div class="card h-100">
       <div class="card-body">
         <h3>Seasonal Fruit Tart (Vegan)</h3>
@@ -100,6 +125,38 @@
       </div>
     </div>
   </div>
+
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body">
+        <h3>New York-Style Cheesecake</h3>
+        <p class="card-text">Classic creamy cheesecake with a graham cracker crust.</p>
+        <span class="price">$15.00</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body">
+        <h3>Chocolate Decadence Cake</h3>
+        <p class="card-text">Rich and moist chocolate cake layered with chocolate ganache and topped with fresh berries.</p>
+        <span class="price">$16.00</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body">
+        <h3>Tiramisu</h3>
+        <p class="card-text">Ladyfingers dipped in espresso and layered with mascarpone cream, dusted with cocoa powder.</p>
+        <span class="price">$14.00</span>
+      </div>
+    </div>
+  </div>
+
+</div>
 </section>
 
 <section class="container text-center py-5">
@@ -142,4 +199,78 @@
     </div>
   </div>
 </section>
+
+<section id="cocktail">
+  <section class="container text-center py-5">
+    <h2>Cocktails</h2>
+
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-body">
+            <h3>Margarita</h3>
+            <p class="card-text">Tequila, lime juice, and orange liqueur, served on the rocks or frozen with a salted rim.</p>
+            <span class="price">$14.00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-body">
+            <h3>Old Fashioned</h3>
+            <p class="card-text">Bourbon whiskey, sugar, bitters, and an orange twist, a timeless classic.</p>
+            <span class="price">$15.00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-body">
+            <h3>Mojito</h3>
+            <p class="card-text">White rum, mint, lime juice, sugar, and soda water, a refreshing summer drink.</p>
+            <span class="price">$14.00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-body">
+            <h3>Daiquiri</h3>
+            <p class="card-text">Rum, lime juice, and simple syrup, a classic Cuban cocktail.</p>
+            <span class="price">$13.00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-body">
+            <h3>Negroni</h3>
+            <p class="card-text">Gin, Campari, and sweet vermouth, a bitter and complex cocktail.</p>
+            <span class="price">$16.00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-body">
+            <h3>Moscow Mule</h3>
+            <p class="card-text">Vodka, ginger beer, and lime juice, served in a copper mug.</p>
+            <span class="price">$15.00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+</section>
+<br>
+<br>
+<br>
+<br>
+<br>
 {% endblock %}
