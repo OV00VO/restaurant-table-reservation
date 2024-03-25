@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<form method="POST" action="{% url 'update_user_info' %}">
+  {% csrf_token %}
+  <br>
+  <br>
+  <br>
+  <section class="container py-5">
+    <div class="row">
+ <h2>Update Your Information</h2>
+      
+    <div class="col-md-6 mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" name="name" value="{{ user.profile.name }}">
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" name="email" value="{{ user.email }}" readonly>  </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label for="phone_number" class="form-label">Phone Number</label>
+      <input type="tel" class="form-control" id="phone_number" name="phone_number" value="{{ user.profile.phone_number }}">
+    </div>
+  </div>
+
+  <div class="row">
+    <h5 class="col-12 mb-3">Optional Reservation Information (for future reference)</h5>
+    <div class="col-md-6 mb-3">
+      <label for="date" class="form-label">Date</label>
+      <input type="date" class="form-control" id="date" name="date" value="{{ user.profile.date }}">
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="time" class="form-label">Time</label>
+      <input type="time" class="form-control" id="time" name="time" value="{{ user.profile.time }}">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label for="number_of_guests" class="form-label">Number of Guests</label>
+      <input type="number" class="form-control" id="number_of_guests" name="number_of_guests" value="{{ user.profile.number_of_guests }}">
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="occasion" class="form-label">Occasion</label>
+      <textarea class="form-control" id="occasion" name="occasion" rows="3">{{ user.profile.occasion }}</textarea>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="agreed_to_terms" name="agreed_to_terms" value="true" {% if user.profile.agreed_to_terms %}checked{% endif %}>
+      <label class="form-check-label" for="agreed_to_terms">Agreed to Terms</label>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <button type="submit" class="btn btn-secondary">Update Information</button>
+  </div>
+</form>
+</section>
+{% else %}
+You are not logged in. Please sign in to update your information.
+{% endif %}
+
+{% endblock %}

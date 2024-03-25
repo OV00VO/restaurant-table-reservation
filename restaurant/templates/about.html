@@ -2,26 +2,12 @@
 
 {% block content %}
 <section class="d-flex justify-content-center align-items-center min-vh-100 hero">
-  <div class="bg-image overlay" style="background-image: url('https://res.cloudinary.com/dpp16gilv/image/upload/v1711030488/Hero%20Images/hero5_dopqhl.webp');"></div>
+  <div class="bg-image overlay" style="background-image: url('https://res.cloudinary.com/dpp16gilv/image/upload/v1711030488/Hero%20Images/hero2_mtlegc.webp');"></div>
   <div class="container position-absolute top-50 start-50 translate-middle text-center">
     <h2><b>About Us at Restaurant Fine Dine</b></h2>
     <p><b>Below you can read more about our Restaurant Fine Dine Experience</b></p>
-    <a href="/reservation" class="btn btn-primary">Make a Reservation by login in to your Restaurant Fine Dine account<br>Or by Request a Table by email submission</a>
+    <a href="{% url 'create_reservation' %}" class="btn btn-primary">Make a Reservation by login in to your Restaurant Fine Dine account<br>Or by Request a Table by email submission</a>
 </section>
-
-<style>
-  .overlay {
-    opacity: 0.5;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    position: absolute;
-  }
-</style>
 
 <section class="container py-5">
 
@@ -72,7 +58,7 @@
 
 <p>At Restaurant Fine Dine, we are committed to providing an exceptional experience that exceeds expectations. Our attentive staff is dedicated to ensuring your comfort and satisfaction from the moment you arrive. We invite you to explore our diverse offerings and create lasting memories at our place.</p>
 
-<a href="/reservation" class="btn btn-primary">Make a Reservation by login in to your Restaurant Fine Dine account<br>Or by Request a Table by email submission</a>
+<a href="{% url 'create_reservation' %}" class="btn btn-primary">Make a Reservation by login in to your Restaurant Fine Dine account<br>Or by Request a Table by email submission</a>
 
 </section>
 <br>

@@ -6,23 +6,9 @@
   <div class="container position-absolute top-50 start-50 translate-middle text-center">
     <h2><b>Welcome to Restaurant Fine Dine Food and Beverages Menu</b></h2>
     <p><b>Below you find our delicious food and beverages with cocktails from our barmenu!</p>
-    <a href="/reservation" class="btn btn-primary">Make a Reservation by login in to your Restaurant Fine Dine account<br>Or by Request a Table by email submission</a>
+    <a href="{% url 'create_reservation' %}" class="btn btn-primary">Make a Reservation by login in to your Restaurant Fine Dine account<br>Or by Request a Table by email submission</a>
   </div>
 </section>
-
-<style>
-  .overlay {
-    opacity: 0.5;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    position: absolute;
-  }
-</style>
 
 <section class="container text-center py-5">
 <h2>Starters</h2>

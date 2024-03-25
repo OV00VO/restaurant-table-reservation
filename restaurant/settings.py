@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     'django_summernote',
     'bookatable',
     'restaurant',
-    'reservatable',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

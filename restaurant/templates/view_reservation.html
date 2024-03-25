@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>View Reservation Details</h2>
+
+{% if reservation %}
+
+<p>Date: {{ reservation.date }}</p>
+<p>Time: {{ reservation.time }}</p>
+
+<a href="{% url 'update_reservation' reservation.id %}" class="btn btn-warning">Edit Reservation</a>
+
+{% else %}
+
+<p>Reservation not found.</p>
+
+{% endif %}
+
+{% endblock %}
