@@ -7,11 +7,16 @@
     <h2><b>Welcome to Restaurant Fine Dine</b></h2>
     <p><b>Experience our delicious food and beverages and drinks in a vibrant atmosphere!</b></p>
     <a href="{% url 'create_reservation' %}" class="btn btn-primary">Make a Reservation by login in to your Restaurant Fine Dine account<br>Or by Request a Table by email submission</a>
-</section>
+  </section>
 
   <main class="container my-5">
 {% if user.is_authenticated %}
-  <h2>{{ user.username }}, Here are Your Current Reservations</h2>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h2>{{ user.username }}, Here are Your Current Reservations</h2>
 <table class="table table-striped table-hover table-bordered">
   <thead>
     <tr>
@@ -52,27 +57,31 @@
         >
           <i class="fas fa-trash-alt"></i>
         </a>
+      </td>
     </tr>
-    </tbody>
-  </table>
-      {% endfor %}
- </tbody>
-  </table>
-            {% if not reservations %}
-              <td colspan="4" style="background-color: rgba(255, 153, 153, 0.5); color: black; border-radius: 5px; padding-left: 10px;">
-  <span style="color: pink;">❌</span> There is currently no booked reservations at the moment, <b>{{ user.username }}</b></span>, please book your next reservation here below.
-</td>
-            {% endif %}
-          </tbody>
-        </table>
-        <div class="col-12 text-center">
-          <br>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h2>Create a New Reservation</h2>
 <a href="{% url 'create_reservation' %}" class="btn btn-primary"
-  >Make a Reservation by login in to your Restaurant Fine Dine account</a
+  >Create Reservation</a
 >
+
+{% else %}
+
+<p>
+  Please sign in or register to view your existing bookings and create new ones.
+</p>
+
+<div class="text-center mt-5">
+  <a href="{% url 'account_login' %}" class="btn btn-success">Sign In</a>
+  <a href="{% url 'account_signup' %}" class="btn btn-secondary">Register</a>
+  <a href="{% url 'reservation_form' %}" class="btn btn-primary">Request a Table</a>
 </div>
-        {% endif %}
-      
+
+
+{% endif %}
 
     <section class="mb-5">
       <br>
@@ -86,7 +95,7 @@
         <div class="card-body">
           <h5 class="card-title">Dining Room (11:00 AM - 10:00 PM)</h5>
           <p class="card-text">Indulge in our curated menus in our elegant dining room. Perfect for a business lunch, a romantic dinner, or a celebratory gathering, our attentive staff ensures your comfort and satisfaction.</p>
-          <a href="menu" class="btn btn-primary">Explore Menu</a>
+          <a href="menu/#starters" class="btn btn-primary">Explore Menu</a>
         </div>
       </div>
 

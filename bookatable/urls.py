@@ -1,13 +1,17 @@
 from django.urls import path
 from . import views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
+
     path('', views.home, name='home'),
     path('menu/', views.menu, name='menu'),
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
     
+    path('signup/', views.signup, name='signup'),
     path('login/', views.login, name='login'),
+    path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', views.logout, name='logout'),
 
     path('reservations/', views.list_reservation, name='reservation_list'),
@@ -19,6 +23,7 @@ urlpatterns = [
     path('my_reservations/', views.my_reservations, name='my_reservations'),
 
     path('update_user_info/', views.update_user_info, name='update_user_info'),
+    path('reservation_form/', views.reservation_form, name='reservation_form'),
     
-    path('test_crud/', views.test_crud, name='test_crud'),
+    path('test_crud/', views.test_crud, name='test_crud')
 ]

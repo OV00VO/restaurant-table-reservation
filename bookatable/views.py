@@ -5,11 +5,11 @@ from .models import Reservation, User
 
 def home(request):
     if request.user.is_authenticated:
-        reservations = Reservation.objects.filter(user=request.user)  # Assuming your model
+        reservations = Reservation.objects.filter(user=request.user)
     else:
         reservations = None
 
-    context = {'reservations': reservations}  # Add reservations to context
+    context = {'reservations': reservations}
     return render(request, 'home.html', context)
 
 def about(request):
@@ -23,6 +23,9 @@ def contact(request):
 
 def login(request):
     return render(request, 'login.html')
+
+def signup(request):
+    return render(request, 'signup.html')
 
 def logout(request):
     return render(request, 'logout.html')
@@ -39,7 +42,22 @@ def reservation_success(request):
 def test_crud(request):
     return render(request, 'test_crud.html')
     
+def login_required_message(request):
+    context = {}
+    if not request.user.is_authenticated:
+        context['login_message'] = "You need to be logged in to make a reservation. Please login or create an account."
+    return context   
+
+def reservation_form(request):
+        return render(request, 'reservation_form.html')
     
+def my_reservations(request):
+    if not request.user.is_authenticated:
+        return redirect('booking_request')
+    
+def view_reservations(request):
+    return render(request, 'reservation.html')
+        
 @login_required
 def my_reservations(request):
     if request.method == 'POST':

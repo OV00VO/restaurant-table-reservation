@@ -1,0 +1,8 @@
+{% extends "base.html" %} {% block content %}
+{% if login_message %}
+  <div class="alert alert-warning">
+    {{ login_message }}
+    <a href="{% url 'login' %}" class="btn btn-primary">Login Now</a>
+  </div>
+{% endif %}
+{% endblock %}
