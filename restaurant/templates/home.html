@@ -2,118 +2,86 @@
 
 {% block content %}
 <section class="d-flex justify-content-center align-items-center min-vh-100 hero">
-<div class="bg-image overlay" style="background-image: url(https://res.cloudinary.com/dpp16gilv/image/upload/v1711030488/Hero%20Images/hero1_eaqdyk.webp);"></div>
+  <div class="bg-image overlay" style="background-image: url(https://res.cloudinary.com/dpp16gilv/image/upload/v1711030488/Hero%20Images/hero1_eaqdyk.webp);"></div>
   <div class="container position-absolute top-50 start-50 translate-middle text-center">
     <h2><b>Welcome to Restaurant Fine Dine</b></h2>
     <p><b>Experience our delicious food and beverages and drinks in a vibrant atmosphere!</b></p>
-    <a href="{% url 'create_reservation' %}" class="btn btn-primary">Make a Reservation by login in to your Restaurant Fine Dine account<br>Or by Request a Table by email submission</a>
+    <a href="{% url 'create_reservation' %}" class="btn btn-primary">Make a Reservation (Login or Request Table)</a>
+  </div>
+</section>
+
+<main class="container my-5">
+  {% if user.is_authenticated %}
+    <h2>{{ user.username }}, Here are Your Current Reservations</h2>
+    <table class="table table-striped table-hover table-bordered">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Guests</th>
+          <th>Occasion</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for reservation in reservations %}
+        <tr>
+          <td>{{ reservation.date }}</td>
+          <td>{{ reservation.time }}</td>
+          <td>{{ reservation.number_of_guests }}</td>
+          <td>{{ reservation.occasion }}</td>
+          <td>
+            <a href="{% url 'view_reservation' reservation.id %}" class="btn btn-sm btn-info" title="View Reservation Details">
+              <i class="fas fa-eye"></i>
+            </a>
+            <a href="{% url 'update_reservation' reservation.id %}" class="btn btn-sm btn-warning" title="Edit Reservation">
+              <i class="fas fa-edit"></i>
+            </a>
+            <a href="{% url 'delete_reservation' reservation.id %}" class="btn btn-sm btn-danger" title="Delete Reservation" onclick="return confirm('Are you sure you want to delete this reservation?')">
+              <i class="fas fa-trash-alt"></i>
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <h2>Create a New Reservation</h2>
+    <a href="{% url 'create_reservation' %}" class="btn btn-primary">Create Reservation</a>
+
+  {% else %}  <p>Please sign in or register to view your existing bookings and create new ones.</p>
+
+    <div class="text-center mt-5">
+      <a href="{% url 'account_login' %}" class="btn btn-success">Sign In</a>
+      <a href="{% url 'account_signup' %}" class="btn btn-secondary">Register</a>
+      <a href="{% url 'reservation_form' %}" class="btn btn-primary">Request a Table</a>
+    </div>
+
+  {% endif %}
+
+  <section class="mb-5">
+    <h2>Step into a World of Refined Elegance</h2>
+    <p>Our restaurant boasts a warm and inviting atmosphere, perfect for any occasion. Soft lighting, plush seating, and the gentle murmur of conversation create a setting that enhances your experience.</p>
   </section>
 
-  <main class="container my-5">
-{% if user.is_authenticated %}
-<br>
-<br>
-<br>
-<br>
-<br>
-<h2>{{ user.username }}, Here are Your Current Reservations</h2>
-<table class="table table-striped table-hover table-bordered">
-  <thead>
-    <tr>
-      <th>Date</th>
-      <th>Time</th>
-      <th>Guests</th>
-      <th>Occasion</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for reservation in reservations %}
-    <tr>
-      <td>{{ reservation.date }}</td>
-      <td>{{ reservation.time }}</td>
-      <td>{{ reservation.number_of_guests }}</td>
-      <td>{{ reservation.occasion }}</td>
-      <td>
-        <a
-          href="{% url 'view_reservation' reservation.id %}"
-          class="btn btn-sm btn-info"
-          title="View Reservation Details"
-        >
-          <i class="fas fa-eye"></i>
-        </a>
-        <a
-          href="{% url 'update_reservation' reservation.id %}"
-          class="btn btn-sm btn-warning"
-          title="Edit Reservation"
-        >
-          <i class="fas fa-edit"></i>
-        </a>
-        <a
-          href="{% url 'delete_reservation' reservation.id %}"
-          class="btn btn-sm btn-danger"
-          title="Delete Reservation"
-          onclick="return confirm('Are you sure you want to delete this reservation?')"
-        >
-          <i class="fas fa-trash-alt"></i>
-        </a>
-      </td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
+  <section class="row row-cols-1 row-cols-md-2 g-4 mb-5">
 
-<h2>Create a New Reservation</h2>
-<a href="{% url 'create_reservation' %}" class="btn btn-primary"
-  >Create Reservation</a
->
-
-{% else %}
-
-<p>
-  Please sign in or register to view your existing bookings and create new ones.
-</p>
-
-<div class="text-center mt-5">
-  <a href="{% url 'account_login' %}" class="btn btn-success">Sign In</a>
-  <a href="{% url 'account_signup' %}" class="btn btn-secondary">Register</a>
-  <a href="{% url 'reservation_form' %}" class="btn btn-primary">Request a Table</a>
-</div>
-
-
-{% endif %}
-
-    <section class="mb-5">
-      <br>
-      <h2>Step into a World of Refined Elegance</h2>
-      <p>Our restaurant boasts a warm and inviting atmosphere, perfect for any occasion. Soft lighting, plush seating, and the gentle murmur of conversation create a setting that enhances your experience.</p>
-    </section>
-
-    <section class="row row-cols-1 row-cols-md-2 g-4 mb-5">
-
-      <div class="col">
-        <div class="card-body">
-          <h5 class="card-title">Dining Room (11:00 AM - 10:00 PM)</h5>
-          <p class="card-text">Indulge in our curated menus in our elegant dining room. Perfect for a business lunch, a romantic dinner, or a celebratory gathering, our attentive staff ensures your comfort and satisfaction.</p>
-          <a href="menu/#starters" class="btn btn-primary">Explore Menu</a>
-        </div>
+    <div class="col">
+      <div class="card-body">
+        <h5 class="card-title">Dining Room (11:00 AM - 10:00 PM)</h5>
+        <p class="card-text">Indulge in our curated menus in our elegant dining room. Perfect for a business lunch, a romantic dinner, or a celebratory gathering, our attentive staff ensures your comfort and satisfaction.</p>
+        <a href="menu/#starters" class="btn btn-primary">Explore Menu</a>
       </div>
+    </div>
 
-      <div class="col">
-        <div class="card-body">
-          <h5 class="card-title">Cocktail Bar (6:00 PM - 2:00 AM)</h5>
-          <p class="card-text">Unwind and socialize in our stylish cocktail bar. Our talented mixologists craft innovative and classic cocktails using premium spirits. Relax with friends, enjoy live music (on select nights), or simply savor a perfectly crafted drink.</p>
-          <a href="menu/#cocktail" class="btn btn-primary">See Cocktail List</a>
-        </div>
+    <div class="col">
+      <div class="card-body">
+        <h5 class="card-title">Cocktail Bar (6:00 PM - 2:00 AM)</h5>
+         <p class="card-text">Unwind and socialize in our stylish cocktail bar. Our talented mixologists craft innovative and classic cocktails using premium spirits. Relax with friends, enjoy live music (on select nights), or simply savor a perfectly crafted drink.</p>
+        <a href="menu/#cocktail" class="btn btn-primary">See Cocktail List</a>
       </div>
+    </div>
 
-  </main>
+  </section>
 
-</body>
-<br>
-<br>
-<br>
-<br>
-<br>
 {% endblock %}
-

@@ -14,6 +14,10 @@ import dj_database_url
 if os.path.isfile('env.py'):
     import env
 from pathlib import Path
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -163,3 +167,10 @@ AUTHENTICATION_BACKENDS = [
 
     
 ]
+
+cloudinary.config( 
+  cloud_name = os.environ.get('CLOUDINARY_NAME'), 
+  api_key = os.environ.get('API_KEY'), 
+  api_secret = os.environ.get('API_SECRET'), 
+  secure = True
+)
