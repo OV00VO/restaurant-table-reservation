@@ -1,3 +1,17 @@
+<!-- Reference: Code Institute Curriculum and Code Star Project -->
+<!-- Reference: https://github.com/flatplanet/Django-CRM -->
+<!-- Reference: https://getbootstrap.com -->
+<!-- Notes: Below code is based on the above references and modifed for the project -->
+
+<!DOCTYPE html>
+<html class="h-100" lang="en">
+<head>
+  <title>Restaurant - Fine Dine - Contact</title>
+  <meta name="description" content="Get in touch with our fine-dining restaurant! Reach us by phone, email, or use our convenient contact form. We look forward to hearing from you.">
+</head>
+</html>
+
+<!-- Reference in modified parts below: https://github.com/flatplanet/Django-CRM -->
 {% extends "base.html" %} {% block content %}
 
 <section class="d-flex justify-content-center align-items-center min-vh-100 hero">
@@ -5,9 +19,12 @@
   <div class="container position-absolute top-50 start-50 translate-middle text-center">
     <h2><b>Contact Us at Restaurant Fine Dine</b></h2>
     <p><b>Below you can find about more how you can contact at Restaurant Fine Dine</b></p>
-    <a href="{% url 'create_reservation' %}" class="btn btn-primary">Make a Reservation by login in to your Restaurant Fine Dine account<br>Or by Request a Table by email submission</a>
+        <a href="{% url 'create_reservation' %}" class="btn btn-primary"
+        >Make a Reservation (Login to Book a Table or Request a Table)</a
+      > 
 </section>
 
+<!-- Reference in modified parts below: Code Institute Curriculum and Code Star Project -->
 <section class="container py-5">
   <div class="row justify-content-center">
     <div class="col-md-6">
@@ -111,15 +128,15 @@
   <div class="row">
     <div class="col-md-6">
       <p>
-        <i class="fas fa-map-marker-alt"></i> Colinary Street, Foodtown, FD 12345
+        <i class="fas fa-map-marker-alt"></i> Culinary Street, Foodtown, FD 12345
       </p>
       <p><i class="fas fa-phone"></i> (0200) restaurant-fine-dine</p>
       <p><i class="fas fa-envelope"></i> info@restaurantfinedine.com</p>
     </div>
-    <div class="col-md-6">
-      <div id="map" style="width: 100%; height: 300px"></div>
-    </div>
-  </div>
+  <section class="container py-5 text-center d-flex justify-content-center">
+        <a href="{% url 'create_reservation' %}" class="btn btn-primary"
+        >Make a Reservation (Login to Book a Table or Request a Table)</a
+      > 
 </section>
   {% endblock %}
 

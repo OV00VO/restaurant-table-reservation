@@ -1,4 +1,16 @@
+<!-- Reference: Code Institute Curriculum and Code Star Project -->
+<!-- Reference: https://github.com/flatplanet/Django-CRM -->
+<!-- Reference: https://getbootstrap.com -->
+<!-- Notes: Below code is based on the above references and modifed for the project -->
+
 {% extends "base.html" %} {% block content %}
+
+<!-- Reference in modified parts below: https://getbootstrap.com -->
+<section class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <section id="reservations">
+        <br />{% extends "base.html" %} {% block content %}
 
 <section class="container py-5">
   <div class="row justify-content-center">
@@ -6,13 +18,171 @@
       <section id="reservations">
         <br />
         <br />
-        <br />
-        <h2>Reservations & Inquiries</h2>
+        <<h2>Unlock Exclusive Benefits - Register or Login</h2>
+          <p><b>Please Sign In, Register or Request a 
+            Table in the form below.</b></p>
 
         <p>
-          We recommend making a reservation to secure your desired table,
-          especially for evenings and weekends. You can easily request a table
-          online or contact us for further information.
+  **Experience a smoother dining experience!** Registering for an account allows you to:
+</p>
+<ul>
+  <li>Book tables online with instant confirmation (within 1 hour).</li>
+  <li>Manage and view your existing reservations easily.</li>
+  <li>Enjoy exclusive offers and promotions (optional: if applicable).</li>
+</ul>
+<p>
+  **Already registered?** Login to your account to access these benefits and book your table quickly. 
+</p>
+<p>
+  **New to our restaurant?** Registering is quick and easy! It allows you to enjoy the perks mentioned above.
+</p>
+<!-- Reference in modified parts below: Code Institute Curriculum and Code Star Project -->        
+<!-- Reference in modified parts below: https://github.com/flatplanet/Django-CRM -->
+        <form
+          id="contact-form"
+          method="POST"
+          action="https://formdump.codeinstitute.net"
+          target="_blank"
+        >
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="contactName">Name:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="contactName"
+                name="contactName"
+                placeholder="Enter Your Name"
+                required
+              />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="contactPhone">Phone Number:</label>
+              <input
+                type="tel"
+                class="form-control"
+                id="contactPhone"
+                name="contactPhone"
+                placeholder="Enter Your Phone Number"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="reservationDate">Date:</label>
+              <input
+                type="date"
+                class="form-control"
+                id="reservationDate"
+                name="reservationDate"
+                required
+              />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="reservationTime">Time:</label>
+              <input
+                type="time"
+                class="form-control"
+                id="reservationTime"
+                name="reservationTime"
+                required
+                placeholder="HH:MM"
+              />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="numGuests">Number of Guests:</label>
+              <div class="input-group">
+                <input
+                  type="number"
+                  min="1"
+                  max="100"
+                  class="form-control"
+                  id="numGuests"
+                  name="numGuests"
+                  required
+                />
+                <div class="input-group-append">
+                  <span class="input-group-text"
+                    ><i class="fas fa-user"></i
+                  ></span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="occasion">Occasion:</label>
+              <div class="row">
+                <div class="col-md-8">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="occasion"
+                    name="occasion"
+                    placeholder="Enter Occasion"
+                  />
+                </div>
+                <div class="col-md-4">
+                  <select class="form-control" id="predefinedOccasion">
+                    <option value="">Event</option>
+                    <option value="birthday">Birthday Celebration</option>
+                    <option value="anniversary">Anniversary Dinner</option>
+                    <option value="business">Business Meeting</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-center mt-5">
+            <a href="{% url 'account_login' %}" class="btn btn-success"
+              >Sign In</a
+            >
+            <a href="{% url 'account_signup' %}" class="btn btn-secondary"
+              >Register</a
+            >
+            <a href="{% url 'reservation_form' %}" class="btn btn-primary"
+              >Request a Table</a
+            >
+          </div>
+        </form>
+
+        <section class="container py-5 text-center">
+          <h2>Follow Us</h2>
+          <p>
+            Stay connected with Restaurant Fine Dine and discover the latest
+            culinary creations, special events, and exclusive offers.
+          </p>
+          <a href="https://www.facebook.com" class="btn btn-secondary mx-2"
+            ><i class="fab fa-facebook-f"></i> Facebook</a
+          >
+          <a href="https://www.instagram.com" class="btn btn-secondary mx-2"
+            ><i class="fab fa-instagram"></i> Instagram</a
+          >
+        </section>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        {% endblock %}
+      </section>
+    </div>
+  </div>
+</section>
+
+        <br />
+        <br />
+        <h2>
+          This is for reservation request at Book a Table with answers within 48 hours!</h2>
+          <p><b>Please Sign In if you like to have a confirmation of the reservation within an hour, Register or Request a Table in the form below.</b></p>
+
+        <p>
+          Reservations & Inquiries - We recommend making a reservation to secure
+          your desired table, especially for evenings and weekends. You can
+          easily request a table online or contact us for further information.
         </p>
 
         <form
@@ -113,11 +283,16 @@
               </div>
             </div>
           </div>
-
-          <div class="col-12 text-center">
-            <button type="submit" class="btn btn-primary mt-3">
-              Request Table
-            </button>
+          <div class="text-center mt-5">
+            <a href="{% url 'account_login' %}" class="btn btn-success"
+              >Sign In</a
+            >
+            <a href="{% url 'account_signup' %}" class="btn btn-secondary"
+              >Register</a
+            >
+            <a href="{% url 'reservation_form' %}" class="btn btn-primary"
+              >Request a Table</a
+            >
           </div>
         </form>
 
@@ -127,10 +302,10 @@
             Stay connected with Restaurant Fine Dine and discover the latest
             culinary creations, special events, and exclusive offers.
           </p>
-          <a href="https://www.facebook.com" class="btn btn-secondary mx-2"
+          <a href="https://www.facebook.com" target="_blank" class="btn btn-secondary mx-2"
             ><i class="fab fa-facebook-f"></i> Facebook</a
           >
-          <a href="https://www.instagram.com" class="btn btn-secondary mx-2"
+          <a href="https://www.instagram.com" target="_blank" class="btn btn-secondary mx-2"
             ><i class="fab fa-instagram"></i> Instagram</a
           >
         </section>

@@ -1,3 +1,7 @@
+# Reference in modified parts below: Code Institute Curriculum and Code Star Project   
+# Reference in modified parts below: https://github.com/flatplanet/Django-CRM
+# Notes: Below code is based on the above references and modifed for the project
+
 from django.urls import path
 from . import views
 from django.contrib.auth import views as auth_views
@@ -13,10 +17,11 @@ urlpatterns = [
     path('login/', views.login, name='login'),
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', views.logout, name='logout'),
-
+    
+# Reference in modified parts below: https://github.com/flatplanet/Django-CRM
     path('reservations/', views.list_reservation, name='reservation_list'),
-    path('create/', views.create_reservation, name='create_reservation'),
-    path('view/<int:reservation_id>/', views.view_reservation, name='view_reservation'),  # Use 'view' instead of 'read'
+    path('create/<int:reservation_id>/', views.create_reservation, name='create_reservation'),
+    path('view/<int:reservation_id>/', views.view_reservation, name='view_reservation'),
     path('update/<int:reservation_id>/', views.update_reservation, name='update_reservation'),
     path('delete/<int:reservation_id>/', views.delete_reservation, name='delete_reservation'),
     path('reservation/success/', views.reservation_success, name='reservation_success'),

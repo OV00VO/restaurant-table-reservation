@@ -1,3 +1,8 @@
+<!-- Reference: Code Institute Curriculum and Code Star Project -->
+<!-- Reference: https://github.com/flatplanet/Django-CRM -->
+<!-- Reference: https://getbootstrap.com -->
+<!-- Notes: Below code is based on the above references and modifed for the project -->
+
 {% extends 'base.html' %}
 {% block content %}
 <br>
@@ -5,29 +10,44 @@
 <br>
 <br>
 <br>
-<h2>Update Reservation</h2>
+<div class="container">
+  <div class="col-md-6 mb-6">
+<h2>Update Your Current Reservation {{ user.username }}</h2>
 
 {% if reservation %}
 
 <form method="POST" action="{% url 'update_reservation' reservation.id %}">
   {% csrf_token %}
-  <div class="row">
-    <br>
-    <br>
-    <br>
+  <br>
+    <div class="col-md-6 mb-3">
+      <label for="phone_number" class="form-label">Phone number</label>
+      <input type="phone_number" class="form-control" id="phone_number" name="phone_number" value="{{ reservation.phone_number }}">
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" name="email" value="{{ reservation.email }}">
+    </div>
     <div class="col-md-6 mb-3">
       <label for="date" class="form-label">Date</label>
-      <input type="date" class="form-control" id="date" name="date" value="{{ reservation.date }}">
+      <input type="date" class="form-control" id="date" name="date" value="{{ reservation.name }}">
     </div>
     <div class="col-md-6 mb-3">
       <label for="time" class="form-label">Time</label>
-      <input type="time" class="form-control" id="time" name="time" value="{{ reservation.reservation.time }}">
+      <input type="time" class="form-control" id="time" name="time" value="{{ reservation.time }}">
     </div>
-  </div>
+      <div class="col-md-6 mb-3">
+      <label for="number_of_guests" class="form-label">Guests</label>
+      <input type="number_of_guests" class="form-control" id="number_of_guests" name="number_of_guests" value="{{ reservation.number_of_guests }}">
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="occasion" class="form-label">Occasion</label>
+      <input type="occasion" class="form-control" id="occasion" name="occasion" value="{{ reservation.occasion }}">
+    </div>
   <div class="col-12">
     <button type="submit" class="btn btn-primary">Save Changes</button>
   </div>
 </form>
+</main>
 
 {% else %}
 

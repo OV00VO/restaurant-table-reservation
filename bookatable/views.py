@@ -1,16 +1,15 @@
+# Reference in modified parts below: Code Institute Curriculum and Code Star Project   
+# Reference in modified parts below: https://github.com/flatplanet/Django-CRM
+# Notes: Below code is based on the above references and modifed for the project
+
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Reservation, User
 
-def home(request):
-    if request.user.is_authenticated:
-        reservations = Reservation.objects.filter(user=request.user)
-    else:
-        reservations = None
 
-    context = {'reservations': reservations}
-    return render(request, 'home.html', context)
+def home(request):
+    return render(request, 'home.html')  
 
 def about(request):
     return render(request, 'about.html')
@@ -53,11 +52,9 @@ def reservation_form(request):
     
 def my_reservations(request):
     if not request.user.is_authenticated:
-        return redirect('booking_request')
+        return redirect('my_reservations')
     
-def view_reservations(request):
-    return render(request, 'reservation.html')
-        
+# Reference in modified parts below: https://github.com/flatplanet/Django-CRM      
 @login_required
 def my_reservations(request):
     if request.method == 'POST':

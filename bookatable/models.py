@@ -1,6 +1,11 @@
-from django.db import models
-from django.contrib.auth.models import User
+# Reference in modified parts below: Code Institute Curriculum and Code Star Project   
+# Reference in modified parts below: https://github.com/flatplanet/Django-CRM
+# Notes: Below code is based on the above references and modifed for the project
 
+from django.db import models
+
+from django.contrib.auth.models import User
+# Reference in modified parts below: https://github.com/flatplanet/Django-CRM
 class Reservation(models.Model):
   user = models.ForeignKey(User, on_delete=models.CASCADE)
   name = models.CharField(max_length=255)

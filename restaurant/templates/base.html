@@ -1,11 +1,9 @@
+<!-- Reference: Code Institute Curriculum and Code Star Project -->
+<!-- Reference: https://github.com/flatplanet/Django-CRM -->
+<!-- Reference: https://getbootstrap.com -->
+<!-- Notes: Below code is based on the above references and modifed for the project -->
+
 {% load static %}
-
-{% url 'home' as home_url %}
-{% url 'about' as about_url %}
-{% url 'account_login' as login_url %}
-{% url 'account_signup' as signup_url %}
-{% url 'account_logout' as logout_url %}
-
 
 <!doctype html>
 <html class="h-100" lang="en">
@@ -17,12 +15,12 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
   </head>
   <body>
+    
+<!-- Reference in modified parts below: https://github.com/flatplanet/Django-CRM -->
     {% include 'navbar.html' %}
-
 {% if user.is_authenticated %}
 {% else %}
 {% endif %}
-    
       {% block content %}
       {% endblock%}
       {% include 'footer.html' %}

@@ -1,3 +1,7 @@
+# Reference in modified parts below: Code Institute Curriculum and Code Star Project   
+# Reference in modified parts below: https://github.com/flatplanet/Django-CRM
+# Notes: Below code is based on the above references and modifed for the project
+
 """
 Django settings for restaurant project.
 
@@ -51,10 +55,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_summernote',
     'bookatable',
-    'restaurant',
+    'pytest',
 ]
-
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
@@ -102,6 +104,7 @@ DATABASES = {
 CSRF_TRUSTED_ORIGINS = [
     "https://*.codeanyapp.com",
     "https://*.herokuapp.com",
+    "https://*.cloudinary.com",
     "http://127.0.0.1:8000/"
 ]
 

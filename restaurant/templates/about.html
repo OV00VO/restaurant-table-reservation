@@ -1,12 +1,26 @@
-{% extends "base.html" %}
+<!-- Reference: Code Institute Curriculum and Code Star Project -->
+<!-- Reference: https://github.com/flatplanet/Django-CRM -->
+<!-- Reference: https://getbootstrap.com -->
+<!-- Notes: Below code is based on the above references and modifed for the project -->
 
-{% block content %}
+<!DOCTYPE html>
+<html class="h-100" lang="en">
+<head>
+  <title>Restaurant - Fine Dine - About</title>
+  <meta name="description" content="Secure your table at our fine-dining restaurant! Book your reservation online quickly and easily. Enjoy an unforgettable culinary experience.">
+</head>
+</html>
+
+<!-- Reference in modified parts below: https://github.com/flatplanet/Django-CRM -->
+{% extends "base.html" %}{% block content %}
 <section class="d-flex justify-content-center align-items-center min-vh-100 hero">
   <div class="bg-image overlay" style="background-image: url(https://res.cloudinary.com/dpp16gilv/image/upload/v1711030488/Hero%20Images/hero2_mtlegc.webp);"></div>
   <div class="container position-absolute top-50 start-50 translate-middle text-center">
     <h2><b>About Us at Restaurant Fine Dine</b></h2>
     <p><b>Below you can read more about our Restaurant Fine Dine Experience</b></p>
-    <a href="{% url 'create_reservation' %}" class="btn btn-primary">Make a Reservation by login in to your Restaurant Fine Dine account<br>Or by Request a Table by email submission</a>
+    <a href="{% url 'create_reservation' %}" class="btn btn-primary"
+        >Make a Reservation (Login to Book a Table or Request a Table)</a
+      >
 </section>
 
 <section class="container py-5">
@@ -53,17 +67,14 @@
     </div>
   </div>
 </div>
-
+<br>
 <h3>Experience the Difference</h3>
-
 <p>At Restaurant Fine Dine, we are committed to providing an exceptional experience that exceeds expectations. Our attentive staff is dedicated to ensuring your comfort and satisfaction from the moment you arrive. We invite you to explore our diverse offerings and create lasting memories at our place.</p>
-
-<a href="{% url 'create_reservation' %}" class="btn btn-primary">Make a Reservation by login in to your Restaurant Fine Dine account<br>Or by Request a Table by email submission</a>
+<section class="container py-5 text-center d-flex justify-content-center">
+<a href="{% url 'create_reservation' %}" class="btn btn-primary"
+        >Make a Reservation (Login to Book a Table or Request a Table)</a
+      >
 
 </section>
-<br>
-<br>
-<br>
-<br>
 <br>
 {% endblock %}

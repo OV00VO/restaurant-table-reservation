@@ -1,3 +1,7 @@
+# Reference in modified parts below: Code Institute Curriculum and Code Star Project   
+# Reference in modified parts below: https://github.com/flatplanet/Django-CRM
+# Notes: Below code is based on the above references and modifed for the project
+
 from django import forms
 from .models import Reservation
 

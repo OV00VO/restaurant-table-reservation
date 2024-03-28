@@ -1,14 +1,29 @@
+<!-- Reference: Code Institute Curriculum and Code Star Project -->
+<!-- Reference: https://github.com/flatplanet/Django-CRM -->
+<!-- Reference: https://getbootstrap.com -->
+<!-- Notes: Below code is based on the above references and modifed for the project -->
+
+<!DOCTYPE html>
+<html class="h-100" lang="en">
+<head>
+  <title>Restaurant - Fine Dine - Contact</title>
+  <meta name="description" content="Plan your unforgettable fine-dining 
+  experience! Book a table online at our restaurant and savor exquisite cuisine
+  in an elegant ambiance.">
+</head>
+</html>
 {% extends 'base.html' %} {% block content %} {% if user.is_authenticated %}
 <br />
 <br />
 <br />
 <br />
-<main class="container my-5">
+<section class="container py-5">
 <h2>Welcome back, {{ user.username }}!</h2>
 {% endif %}
-<h2>Please Create a Next Reservation Here!</h2>
 
-<form method="POST" action="{% url 'create_reservation' %}">
+<!-- Reference in modified parts below: https://github.com/flatplanet/Django-CRM -->
+<h2>Please Create Your Next Reservation Here!</h2>
+<form method="POST" action="{% url 'bookatable' %}">
   {% csrf_token %}
   <div class="row">
     <div class="col-md-6 mb-3">
@@ -37,6 +52,15 @@
         name="occasion"
       />
     </div>
+   <div class="form-check form-check-inline d-flex justify-content-between">
+  <div class="ms-auto">
+    <a href="{% url 'terms_and_conditions' %}">Read Terms & Conditions</a>
+    <label class="form-check-label" for="terms">
+      I agree to the terms and conditions
+    </label>
+    <input type="checkbox" class="form-check-input" id="terms" name="terms" />
+  </div>
+</div> 
   </div>
   <div class="col-12">
     <button type="submit" class="btn btn-primary">Create Reservation</button>
