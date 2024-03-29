@@ -60,10 +60,14 @@ def login_required_message(request):
     return context   
 
 
+def default_request(request):
+        return render(request, 'default_request.html')
+    
+    
 def reservation_form(request):
         return render(request, 'reservation_form.html')
     
-    
+        
 def my_reservations(request):
     if not request.user.is_authenticated:
         return redirect('my_reservations')

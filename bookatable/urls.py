@@ -36,5 +36,7 @@ urlpatterns = [
     path('reservation_form/', views.reservation_form, name='reservation_form'),
     path('terms/', views.agreed_to_terms, name='agreed_to_terms'),
     
-    path('test_crud/', views.test_crud, name='test_crud')
+    path('test_crud/', views.test_crud, name='test_crud'),
+    
+    path('default_request/', views.default_request, name='default_request'), 
 ]
