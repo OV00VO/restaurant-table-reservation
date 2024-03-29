@@ -20,7 +20,7 @@ urlpatterns = [
     
 # Reference in modified parts below: https://github.com/flatplanet/Django-CRM
     path('reservations/', views.list_reservation, name='reservation_list'),
-    path('create/<int:reservation_id>/', views.create_reservation, name='create_reservation'),
+    path('create_reservation/', views.create_reservation, name='create_reservation'),
     path('view/<int:reservation_id>/', views.view_reservation, name='view_reservation'),
     path('update/<int:reservation_id>/', views.update_reservation, name='update_reservation'),
     path('delete/<int:reservation_id>/', views.delete_reservation, name='delete_reservation'),
@@ -29,6 +29,7 @@ urlpatterns = [
 
     path('update_user_info/', views.update_user_info, name='update_user_info'),
     path('reservation_form/', views.reservation_form, name='reservation_form'),
+    path('terms/', views.agreed_to_terms, name='agreed_to_terms'),
     
     path('test_crud/', views.test_crud, name='test_crud')
 ]

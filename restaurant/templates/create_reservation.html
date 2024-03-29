@@ -23,7 +23,7 @@
 
 <!-- Reference in modified parts below: https://github.com/flatplanet/Django-CRM -->
 <h2>Please Create Your Next Reservation Here!</h2>
-<form method="POST" action="{% url 'bookatable' %}">
+<form method="POST" action="{% url 'create_reservation' %}">
   {% csrf_token %}
   <div class="row">
     <div class="col-md-6 mb-3">
@@ -54,11 +54,11 @@
     </div>
    <div class="form-check form-check-inline d-flex justify-content-between">
   <div class="ms-auto">
-    <a href="{% url 'terms_and_conditions' %}">Read Terms & Conditions</a>
-    <label class="form-check-label" for="terms">
+    <a href="{% url 'agreed_to_terms' %}">Read Terms & Conditions</a>
+    <label class="form-check-label" for="agreed_to_terms">
       I agree to the terms and conditions
     </label>
-    <input type="checkbox" class="form-check-input" id="terms" name="terms" />
+    <input type="checkbox" class="form-check-input" id="agreed_to_terms" name="agreed_to_terms" />
   </div>
 </div> 
   </div>

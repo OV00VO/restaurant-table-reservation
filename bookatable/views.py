@@ -54,6 +54,9 @@ def my_reservations(request):
     if not request.user.is_authenticated:
         return redirect('my_reservations')
     
+def agreed_to_terms(request):
+    return render(request, 'agreed_to_terms.html')
+    
 # Reference in modified parts below: https://github.com/flatplanet/Django-CRM      
 @login_required
 def my_reservations(request):

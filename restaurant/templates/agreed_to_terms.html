@@ -10,6 +10,9 @@
 <!-- Reference in modified parts below: Code Institute Curriculum and Code Star Project -->        
 <!-- Reference in modified parts below: https://github.com/flatplanet/Django-CRM -->
   <section class="container py-5">
+    <br>
+    <br>
+    <br>
     <h2>Terms & Conditions</h2>
     <p>Welcome to Restaurant Fine Dine! By accessing or using our website or services, you agree to be bound by these Terms and Conditions ("Terms"). These Terms govern your access to and use of our website, mobile applications, and other online services (collectively, the "Services").</p>
 
@@ -61,5 +64,9 @@
     </div>
   </div>
 </div>
-
+<div class="col-12">
+    <section class="container py-5 text-center d-flex justify-content-center">
+        <a href="{% url 'create_reservation' %}" class="btn btn-primary"
+        >Please check Agree to our Legal Terms at the Reservation, to skip the 48 h callback verification!</a
+      > 
 {% endblock %}
