@@ -1,6 +1,13 @@
-# Reference in modified parts below: Code Institute Curriculum and Code Star Project   
+# Reference in modified parts Code Institute Curriculum and Code Star Project
 # Reference in modified parts below: https://github.com/flatplanet/Django-CRM
-# Notes: Below code is based on the above references and modifed for the project
+# Notes: Below code is based on the above references, modifed for the project
+
+from django.contrib.auth.password_validation import (
+    UserAttributeSimilarityValidator,
+    MinimumLengthValidator,
+    CommonPasswordValidator,
+    NumericPasswordValidator,
+)
 
 """
 Django settings for restaurant project.
@@ -111,26 +118,19 @@ CSRF_TRUSTED_ORIGINS = [
 #        'ENGINE': 'django.db.backends.sqlite3',
 #        'NAME': BASE_DIR / 'db.sqlite3',
 #    }
-#}
+# }
 
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
-AUTH_PASSWORD_VALIDATORS = [ 
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+AUTH_PASSWORD_VALIDATORS = [
+    UserAttributeSimilarityValidator,
+    MinimumLengthValidator,
+    CommonPasswordValidator,
+    NumericPasswordValidator,
 ]
+
 
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
@@ -151,27 +151,25 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = [    os.path.join(BASE_DIR, 'restaurant', 'static')
-]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'restaurant', 'static')]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTHENTICATION = {
-    'LOGIN_URL': 'login/', 
+    'LOGIN_URL': 'login/',
 }
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 
-    
 ]
 
-cloudinary.config( 
-  cloud_name = os.environ.get('CLOUDINARY_NAME'), 
-  api_key = os.environ.get('API_KEY'), 
-  api_secret = os.environ.get('API_SECRET'), 
-  secure = True
+cloudinary.config(
+    cloud_name=os.environ.get('CLOUDINARY_NAME'),
+    api_key=os.environ.get('API_KEY'),
+    api_secret=os.environ.get('API_SECRET'),
+    secure=True
 )

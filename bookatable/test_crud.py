@@ -1,21 +1,23 @@
-# Reference in modified parts below: Code Institute Curriculum and Code Star Project   
-# Reference in modified parts below: https://github.com/flatplanet/Django-CRM
-# Reference in modified parts below: https://www.pythonpool.com/python-unittest-vs-pytest/
-# Notes: Below code is based on the above references and modifed for the project
-
+# Reference, modified: Code Institute Curriculum and Code Star Project
+# Reference, modified: https://github.com/flatplanet/Django-CRM
+# Reference, modified: https://www.pythonpool.com/python-unittest-vs-pytest/
+# Notes: Below code is based on the above references, modifed for the project
 
 from django.test import TestCase
 
 from .models import Reservation
 
-# Reference in modified parts below: https://www.pythonpool.com/python-unittest-vs-pytest/
+# Reference, modified:: https://www.pythonpool.com/python-unittest-vs-pytest/
+
+
 class ReservationTests(TestCase):
-    """Tests for Reservation model functionality using a PostgreSQL database."""
+    """Tests for Reservation model functionality using a PostgreSQL
+    database."""
 
     def setUp(self):
         """
-        Override settings with environment variable values (if `pytest-django` is not used).
-
+        Override settings with environment variable values (if `pytest-django`
+        is not used).
         This approach assumes you set DATABASE_URL in your environment.
         """
         from django.core.exceptions import ImproperlyConfigured

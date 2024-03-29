@@ -1,6 +1,6 @@
-# Reference in modified parts below: Code Institute Curriculum and Code Star Project   
+# Reference in modified parts below: Code Institute and Code Star Project   
 # Reference in modified parts below: https://github.com/flatplanet/Django-CRM
-# Notes: Below code is based on the above references and modifed for the project
+# Notes: Below code is modified and based on the above references.
 
 from django.urls import path
 from . import views
@@ -20,11 +20,16 @@ urlpatterns = [
     
 # Reference in modified parts below: https://github.com/flatplanet/Django-CRM
     path('reservations/', views.list_reservation, name='reservation_list'),
-    path('create_reservation/', views.create_reservation, name='create_reservation'),
-    path('view/<int:reservation_id>/', views.view_reservation, name='view_reservation'),
-    path('update/<int:reservation_id>/', views.update_reservation, name='update_reservation'),
-    path('delete/<int:reservation_id>/', views.delete_reservation, name='delete_reservation'),
-    path('reservation/success/', views.reservation_success, name='reservation_success'),
+    path('create_reservation/', views.create_reservation, 
+         name='create_reservation'),
+    path('view/<int:reservation_id>/', views.view_reservation, 
+         name='view_reservation'),
+    path('update/<int:reservation_id>/', views.update_reservation, 
+         name='update_reservation'),
+    path('delete/<int:reservation_id>/', views.delete_reservation, 
+         name='delete_reservation'),
+    path('reservation/success/', views.reservation_success, 
+         name='reservation_success'),
     path('my_reservations/', views.my_reservations, name='my_reservations'),
 
     path('update_user_info/', views.update_user_info, name='update_user_info'),
