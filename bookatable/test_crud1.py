@@ -5,44 +5,35 @@
 
 from django.test import TestCase
 
-from .models import Reservation
+from bookatable.models import Reservation
 
 # Reference, modified:: https://www.pythonpool.com/python-unittest-vs-pytest/
 
 
 class ReservationTests(TestCase):
-    """Tests for Reservation model functionality using a PostgreSQL
-    database."""
-
-    def setUp(self):
-        """
-        Override settings with environment variable values (if `pytest-django`
-        is not used).
-        This approach assumes you set DATABASE_URL in your environment.
-        """
-        from django.core.exceptions import ImproperlyConfigured
-        try:
-            from django.conf import settings
-            settings.configure(**os.environ.get('DJANGO_SETTINGS_MODULE'))
-        except ImproperlyConfigured:
-            pass
+    """Tests for Reservation model functionality using a PostgreSQL database."""
 
     def test_create_reservation(self):
-        """Test creating a reservation."""
+        """Test creating a reservation with required fields."""
         reservation = Reservation.objects.create(
-        )
-        self.assertEqual(reservation.name, "John Doe")
+            name="Test User",
+             )
+        self.assertEqual(reservation.name, "Test User")
 
+    
     def test_read_reservation(self):
         """Test reading a reservation."""
         reservation = Reservation.objects.create(
-        )
+            name="Sample Name",
+             )
         fetched_reservation = Reservation.objects.get(pk=reservation.pk)
-        self.assertEqual(fetched_reservation.name, "Jane Doe")
-
+        self.assertEqual(fetched_reservation.name, "Sample Name")
+        
+        
     def test_update_reservation(self):
         """Test updating a reservation."""
         reservation = Reservation.objects.create(
+            name="Original Name",
         )
         reservation.name = "Updated Name"
         reservation.save()
@@ -52,7 +43,9 @@ class ReservationTests(TestCase):
     def test_delete_reservation(self):
         """Test deleting a reservation."""
         reservation = Reservation.objects.create(
+            name="Reservation Name",
         )
         reservation_count = Reservation.objects.count()
         reservation.delete()
-        self.assertEqual(Reservation.objects.count(), reservation_count - 1)
+        self.assertEqual(Reservation.objects.count(), reservation_count - 1)    
+        

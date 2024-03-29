@@ -189,7 +189,9 @@ Open `http://127.0.0.1:8000/` in your web browser.
 
 ## 5. Testing
 
-When developing this project there was issues with the uploaded Cloudinary images, I could not find a workaround for this, or load the images through static in the Django project image folder. Not even was i possible to get the CSS to work on Heroku, only in development and Debug mode. Even though special settings in both Django and in Heroku Config Var. There could be a database rights issue or anything else. The image itself is connected and resulting with a 200 server code in Chrome Developer mode, but when running the database in local environment it posts a 500 server code. 
+When developing this project there was issues with the uploaded Cloudinary images, I could not find a workaround for this, or load the images through static in the Django project image folder. It was not possible to get the CSS to work on Heroku either, only in the development and with the Debug True mode. During the project, both database and other got corrupted when trying to add user functionalites for the reservations system. Even though special settings in both Django and in Heroku Config Var. There could be a database rights issue or anything else. The image itself is connected and resulting with a 200 server code in Chrome Developer mode, but when running the database in local environment it posts a 500 server code. There was also a problem to get a mockup based on the published Heroku app. 
+
+https://ui.dev/amiresponsive?url=https://restaurant-table-reservation-1359a4e78b73.herokuapp.com/
 
 Testing Frameworks:
 
@@ -197,13 +199,13 @@ Testing Frameworks:
 
 https://validator.w3.org/
 
-I conducted manual testing on the HTML code to ensure it adheres to web standards. This involved verifying the overall structure, checking for proper nesting of elements, and confirming the presence of closing tags. Additionally, I tested the functionality of hyperlinks and forms, ensuring they link to the correct destinations and submit data as expected. To be mentioned is that there is functions that could not properly be replaced to functions in the validator for instance functions for navbar and some of the database connections on the projects pages, without loosing the overall function. 
+I conducted manual testing on the HTML code to ensure it adheres to web standards. This involved verifying the overall structure, checking for proper nesting of elements, and confirming the presence of closing tags. Additionally, I tested the functionality of hyperlinks and forms, ensuring they link to the correct destinations and submit data as expected. To be mentioned is that there is functions that could not properly be replaced to functions in the validator for instance functions for navbar and some of the database connections on the projects pages, without risking the overall function. 
 
 #### CSS:
 
 https://jigsaw.w3.org/css-validator/
 
-My manual testing of the CSS focused on the visual appearance of the application. I checked for consistent styling across different pages, ensuring elements like buttons, menus, and text adhere to the intended design. Additionally, I tested the responsiveness of the layout on various screen sizes (desktop, mobile, tablet) to confirm proper display across devices. However there is a problem loading this to Heroku, and functions works i development mode but not as deployed. None of the troubleshooting i found was able to fix this issue.
+My manual testing of the CSS focused on the visual appearance of the application. I checked for consistent styling across different pages, ensuring elements like buttons, menus, and text adhere to the intended design. Additionally, I tested the responsiveness of the layout on various screen sizes (desktop, mobile, tablet) to confirm proper display across devices. However there is a problem loading this to Heroku, and functions works in development mode but not as a deployed Heroku app. None of the troubleshooting I was able to found was able to offer a solutiong to fix these issues.
 
 #### JavaScript:
 
@@ -220,7 +222,7 @@ While not strictly manual testing, I used a pep 8 linting tool called CI Python 
 
 #### Unit Database Testing: 
 Unittest (built-in with Python) or pytest Unit tests focus on individual functions and modules, ensuring they behave as expected with various inputs. For this project 
-PyTest was used.
+PyTest was used, but not all with success in all functions, there was database access issues and some functions and test had to be removed due to not compatible, but also that in some cases I could not find the proper information for a solution and a manual testing method was instead used in some cases.
 
 * Unittest
 https://docs.python.org/3/library/unittest.html
@@ -276,7 +278,7 @@ For a project in this range there is always inspirations and sometimes codes
 resused in some extent and so does this project. Previous Code Institute 
 projects and other students solutions for other projects has been an inspiration 
 and sometimes as a brick laying start. The main references are mentioned in the 
-code but some contributors i mention here for further exploaration and ideas.
+code but some contributors I mention here for further exploaration and ideas.
 
 #### Code Institute Curriculum and Code Star Project: 
 https://codeinstitute.net/
@@ -291,7 +293,7 @@ https://getbootstrap.com
 https://www.pythonpool.com/python-unittest-vs-pytest/
 
 ### 8. Contributing
-We welcome contributions from the community! If you have bug fixes, improvements, or new features, feel free to submit a pull request. Here's a suggested workflow for contributing:
+It is appreciated for contributions from the community to add to this projects foundation for our collective knowledge! If you have bug fixes, improvements, or new features, feel free to submit a pull request. Here's a suggested workflow for contributing:
 
 ### Fork the Repository:
 Visit the project repository on GitHub: `https://github.com/<your-username>/`Restaurant-Table-Reservation.
@@ -339,7 +341,7 @@ into (usually the main branch).
 pull request body.
 * Click "Create pull request" to submit your contribution for review.
 
-We appreciate your contributions to the project!
+I deeply appreciate your contributions to the project!
 
 ## 9. Licence
 

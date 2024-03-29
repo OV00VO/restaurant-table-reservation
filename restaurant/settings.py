@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.staticfiles',
     'bookatable',
+    'pytest',
 ]
 
 SITE_ID = 1
