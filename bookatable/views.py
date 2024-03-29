@@ -7,6 +7,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Reservation, User
+from django.conf import settings
 
 
 def home(request):
@@ -169,3 +170,8 @@ def update_user_info(request):
         return redirect('my_reservations')
 
     return render(request, 'my_reservations.html')
+
+def your_view(request):
+    image_url = settings.STATIC_URL + 'restaurant/static/img/hero1.webp'
+    context = {'image_url': image_url}
+    return render(request, 'restaurant/menu.html', context)

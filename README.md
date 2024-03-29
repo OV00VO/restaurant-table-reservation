@@ -189,26 +189,28 @@ Open `http://127.0.0.1:8000/` in your web browser.
 
 ## 5. Testing
 
+When developing this project there was issues with the uploaded Cloudinary images, I could not find a workaround for this, or load the images through static in the Django project image folder. Not even was i possible to get the CSS to work on Heroku, only in development and Debug mode. Even though special settings in both Django and in Heroku Config Var. There could be a database rights issue or anything else. The image itself is connected and resulting with a 200 server code in Chrome Developer mode, but when running the database in local environment it posts a 500 server code. 
+
 Testing Frameworks:
 
 #### HTML:
 
 https://validator.w3.org/
 
-I conducted manual testing on the HTML code to ensure it adheres to web standards. This involved verifying the overall structure, checking for proper nesting of elements, and confirming the presence of closing tags. Additionally, I tested the functionality of hyperlinks and forms, ensuring they link to the correct destinations and submit data as expected.
+I conducted manual testing on the HTML code to ensure it adheres to web standards. This involved verifying the overall structure, checking for proper nesting of elements, and confirming the presence of closing tags. Additionally, I tested the functionality of hyperlinks and forms, ensuring they link to the correct destinations and submit data as expected. To be mentioned is that there is functions that could not properly be replaced to functions in the validator for instance functions for navbar and some of the database connections on the projects pages, without loosing the overall function. 
 
 #### CSS:
 
 https://jigsaw.w3.org/css-validator/
 
-My manual testing of the CSS focused on the visual appearance of the application. I checked for consistent styling across different pages, ensuring elements like buttons, menus, and text adhere to the intended design. Additionally, I tested the responsiveness of the layout on various screen sizes (desktop, mobile, tablet) to confirm proper display across devices.
+My manual testing of the CSS focused on the visual appearance of the application. I checked for consistent styling across different pages, ensuring elements like buttons, menus, and text adhere to the intended design. Additionally, I tested the responsiveness of the layout on various screen sizes (desktop, mobile, tablet) to confirm proper display across devices. However there is a problem loading this to Heroku, and functions works i development mode but not as deployed. None of the troubleshooting i found was able to fix this issue.
 
 #### JavaScript:
 
 https://validatejavascript.com/
 https://jshint.com/
 
-For JavaScript, I manually tested interactive elements and functionalities driven by JavaScript code. This included checking features like form validation (client-side), dynamic content updates (if any), and user interface animations or transitions. I also verified that JavaScript errors are not displayed to the user, ensuring a smooth user experience.
+For JavaScript, I tested interactive elements and functionalities driven by JavaScript code, however this is not inluded to this project because of the functions could be created with bootstrap and django functions. This included checking features like form validation (client-side), dynamic content updates (if any), and user interface animations or transitions. For further development some of the future functions would benefit from this where it is applicable. And because of the above issues in the project with both Cloudinary, CSS and all the other static issues, I tried to develop without extra functions.
 
 #### Linting:
 

@@ -9,20 +9,19 @@
   <title>Restaurant - Fine Dine - Contact</title>
   <meta name="description" content="Get in touch with our fine-dining restaurant! Reach us by phone, email, or use our convenient contact form. We look forward to hearing from you.">
 </head>
-</html>
+<body>
 
 <!-- Reference in modified parts below: https://github.com/flatplanet/Django-CRM -->
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %}{% block content %}
 
 <section class="d-flex justify-content-center align-items-center min-vh-100 hero">
-  <div class="bg-image overlay" style="background-image: url(https://res.cloudinary.com/dpp16gilv/image/upload/v1711030488/hero/hero3_ltygo9.webp);"></div>
+  <div class="bg-image overlay" style="background-image: url(https://res.cloudinary.com/dpp16gilv/image/upload/v1711030488/hero/hero2_mtlegc.webp);"></div>
   <div class="container position-absolute top-50 start-50 translate-middle text-center">
     <h2><b>Contact Us at Restaurant Fine Dine</b></h2>
     <p><b>Below you can find about more how you can contact at Restaurant Fine Dine</b></p>
-        <a href="{% url 'reservation_form' %}" class="btn btn-primary"
-        >Make a Reservation (Login to Book a Table or Request a Table)</a
-      > 
-</section>
+    <a href="/reservation_form/" class="btn btn-primary"
+        >Make a Reservation (Login to Book a Table or Request a Table)</a>
+</div></section>
 
 <!-- Reference in modified parts below: Code Institute Curriculum and Code Star Project -->
 <section class="container py-5">
@@ -61,9 +60,7 @@
         or a relaxing midday escape,
         we have a space to suit your mood.
       </p>
-    </div>
-  </div>
-  </div>
+      </section>
 <section class="container py-5"> 
   <h2>Unwind & Explore Our Facilities</h2>
 
@@ -109,7 +106,7 @@
     page provides our contact information. We recommend visiting our website for
     more detailed information or following us on social media for updates.
   </p>
-  <br />
+  <br>
 
   <h3>Experience the Difference</h3>
 
@@ -124,7 +121,7 @@
     Have a question or want to make a reservation? Reach out to us using the
     information below, or fill out the contact form above.
   </p>
-
+</section>
   <div class="row">
     <div class="col-md-6">
       <p>
@@ -132,11 +129,5 @@
       </p>
       <p><i class="fas fa-phone"></i> (0200) restaurant-fine-dine</p>
       <p><i class="fas fa-envelope"></i> info@restaurantfinedine.com</p>
-    </div>
-  <section class="container py-5 text-center d-flex justify-content-center">
-        <a href="{% url 'reservation_form' %}" class="btn btn-primary"
-        >Make a Reservation (Login to Book a Table or Request a Table)</a
-      > 
-</section>
+    </div></div></section>
   {% endblock %}
-
